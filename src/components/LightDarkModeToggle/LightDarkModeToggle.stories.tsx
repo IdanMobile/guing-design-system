@@ -1,7 +1,7 @@
 // LightDarkModeToggle.stories.tsx
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import LightDarkModeToggle from './LightDarkModeToggle';
+import { Meta, Story } from '@storybook/react';
+import LightDarkModeToggle, { LightDarkModeToggleProps } from './LightDarkModeToggle';
 
 export default {
   title: 'Components/LightDarkModeToggle',
@@ -28,7 +28,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => <LightDarkModeToggle {...args} />;
+const Template: Story<LightDarkModeToggleProps> = (args) => <LightDarkModeToggle {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -48,5 +48,19 @@ export const Stroked = Template.bind({});
 Stroked.args = {
   size: 'medium',
   variant: 'stroked',
+  initialState: 'light',
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+  variant: 'default',
+  initialState: 'light',
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  variant: 'default',
   initialState: 'light',
 };

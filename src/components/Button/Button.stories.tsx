@@ -10,65 +10,60 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic', 'icon'],
+        options: ['default', 'flat', 'stroked', 'basic'],
       },
     },
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
+    pressed: {
+      control: 'boolean',
     },
     disabled: {
       control: 'boolean',
     },
-    children: {
+    icon: {
+      control: 'boolean',
+    },
+    className: {
       control: 'text',
     },
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => <Button {...args}>Button</Button>;
 
 export const Default = Template.bind({});
 Default.args = {
   variant: 'default',
-  size: 'medium',
-  children: 'Button',
+  pressed: false,
+  disabled: false,
+  icon: false,
 };
 
 export const Flat = Template.bind({});
 Flat.args = {
   variant: 'flat',
-  size: 'medium',
-  children: 'Button',
 };
 
 export const Stroked = Template.bind({});
 Stroked.args = {
   variant: 'stroked',
-  size: 'medium',
-  children: 'Button',
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
   variant: 'basic',
-  size: 'medium',
-  children: 'Button',
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
-  variant: 'icon',
-  size: 'medium',
-  children: '🔍',
+export const Pressed = Template.bind({});
+Pressed.args = {
+  pressed: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  variant: 'default',
-  size: 'medium',
   disabled: true,
-  children: 'Button',
+};
+
+export const Icon = Template.bind({});
+Icon.args = {
+  icon: true,
 };

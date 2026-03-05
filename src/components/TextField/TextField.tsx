@@ -11,9 +11,9 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   variant?: 'default' | 'outlined' | 'filled';
   /**
-   * Whether the text field is disabled
+   * The state of the text field
    */
-  disabled?: boolean;
+  state?: 'normal' | 'disabled' | 'error';
   /**
    * Additional class name for custom styling
    */
@@ -23,35 +23,59 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'medium',
   variant = 'default',
-  disabled = false,
-  className = '',
+  state = 'normal',
+  className,
   ...props
 }, ref) => {
+  const getBackgroundColor = () => {
+    switch (variant) {
+      case 'outlined':
+        return 'transparent';
+      case 'filled':
+        return 'var(--color-dialog-sections-master-table)';
+      default:
+        return 'var(--color-white)';
+    }
+  };
+
+  const getBorderColor = () => {
+    if (state === 'error') return 'var(--color-error)';
+    return variant === 'outlined' ? 'var(--color-divider-stroke)' : 'transparent';
+  };
+
+  const getFontSize = () => {
+    switch (size) {
+      case 'small':
+        return '12px';
+      case 'large':
+        return '18px';
+      default:
+        return '14px';
+    }
+  };
+
   const styles = {
-    base: {
+    input: {
+      backgroundColor: getBackgroundColor(),
+      borderColor: getBorderColor(),
+      borderWidth: variant === 'outlined' ? '1px' : '0',
+      borderStyle: 'solid',
       padding: '8px 12px',
-      borderRadius: '4px',
-      border: '1px solid',
+      fontSize: getFontSize(),
+      color: state === 'disabled' ? 'var(--color-disabled-text)' : 'var(--color-text-field)',
+      cursor: state === 'disabled' ? 'not-allowed' : 'text',
+      width: '100%',
+      boxSizing: 'border-box' as const,
       outline: 'none',
-      fontFamily: 'var(--font-inter-regular)',
-      fontSize: '14px',
-      lineHeight: '20px',
-      backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white)',
-      borderColor: variant === 'outlined' ? 'var(--color-divider-stroke)' : 'transparent',
-      color: 'var(--color-text)',
-      width: size === 'small' ? '150px' : size === 'large' ? '300px' : '200px',
-      cursor: disabled ? 'not-allowed' : 'text',
-      opacity: disabled ? 0.5 : 1,
     },
   };
 
   return (
     <input
       ref={ref}
-      type="text"
-      disabled={disabled}
+      style={styles.input}
       className={className}
-      style={styles.base}
+      disabled={state === 'disabled'}
       {...props}
     />
   );
