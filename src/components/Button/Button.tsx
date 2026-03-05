@@ -5,41 +5,25 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon';
   /**
    * The size of the button.
    */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * If true, the button will be in a pressed state.
-   */
-  pressed?: boolean;
-  /**
-   * If true, the button will be disabled.
-   */
-  disabled?: boolean;
   /**
    * Additional class name for custom styling.
    */
   className?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
-  variant = 'default',
-  size = 'medium',
-  pressed = false,
-  disabled = false,
-  className,
-  children,
-  ...props
-}, ref) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ variant = 'default', size = 'medium', className, ...props }, ref) => {
   const styles = {
     base: {
-      fontFamily: 'var(--font-large-header)',
-      padding: size === 'small' ? '8px 16px' : size === 'large' ? '16px 32px' : '12px 24px',
+      fontFamily: 'var(--font-secondery-text)',
+      padding: '10px 20px',
       borderRadius: '4px',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      opacity: disabled ? 0.5 : 1,
+      cursor: 'pointer',
+      display: 'inline-block',
       transition: 'background-color 0.3s',
     },
     variants: {
@@ -53,37 +37,65 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       },
       stroked: {
         backgroundColor: 'transparent',
-        border: '1px solid var(--color-primary-buttons)',
         color: 'var(--color-primary-buttons)',
+        border: '1px solid var(--color-primary-buttons)',
       },
       basic: {
         backgroundColor: 'var(--color-buttons-input)',
-        color: 'var(--color-buttons-text-field)',
+        color: 'var(--color-text-field)',
+      },
+      toggle: {
+        backgroundColor: 'var(--color-section)',
+        color: 'var(--color-white)',
+      },
+      'multi-function': {
+        backgroundColor: 'var(--color-green-success)',
+        color: 'var(--color-white)',
+      },
+      pressed: {
+        backgroundColor: 'var(--color-hover)',
+        color: 'var(--color-white)',
+      },
+      disabled: {
+        backgroundColor: 'var(--color-disabled)',
+        color: 'var(--color-disabled-text)',
+        cursor: 'not-allowed',
+      },
+      icon: {
+        backgroundColor: 'transparent',
+        color: 'var(--color-icons-1)',
+        padding: '10px',
       },
     },
-    pressed: {
-      backgroundColor: 'var(--color-hover)',
+    sizes: {
+      small: {
+        fontSize: '12px',
+        padding: '8px 16px',
+      },
+      medium: {
+        fontSize: '14px',
+        padding: '10px 20px',
+      },
+      large: {
+        fontSize: '16px',
+        padding: '12px 24px',
+      },
     },
   };
 
-  const combinedStyles = {
-    ...styles.base,
-    ...styles.variants[variant],
-    ...(pressed && !disabled ? styles.pressed : {}),
-  };
+  const variantStyle = styles.variants[variant] || styles.variants.default;
+  const sizeStyle = styles.sizes[size] || styles.sizes.medium;
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
+      style={{ ...styles.base, ...variantStyle, ...sizeStyle }}
       className={className}
-      disabled={disabled}
+      disabled={variant === 'disabled'}
       {...props}
-    >
-      {children}
-    </button>
+    />
   );
 });
 
-export { Button };
 export default Button;
+export { Button };

@@ -1,31 +1,31 @@
 {
-  "version": "0.0.4",
-  "generatedAt": "2026-03-05T13:09:30.046Z",
+  "version": "0.0.6",
+  "generatedAt": "2026-03-05T13:36:54.520Z",
   "components": [
     {
       "name": "TextField",
       "path": "src/components/TextField/TextField.tsx",
       "description": "TextField component",
       "props": {
-        "variant": {
-          "type": "'default' | 'dialog' | 'section'",
-          "required": false,
-          "description": "Background color variant for the text field"
-        },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "Size of the text field"
+          "description": "The size of the text field\n'small', 'medium', or 'large'"
         },
-        "disabled": {
-          "type": "boolean",
+        "variant": {
+          "type": "'outlined' | 'filled' | 'standard'",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "The variant of the text field\n'outlined', 'filled', or 'standard'"
+        },
+        "state": {
+          "type": "'default' | 'hover' | 'focused' | 'disabled'",
+          "required": false,
+          "description": "The state of the text field\n'default', 'hover', 'focused', or 'disabled'"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional class name for styling"
         }
       }
     },
@@ -35,7 +35,7 @@
       "description": "Button component",
       "props": {
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon'",
           "required": false,
           "description": "The variant of the button."
         },
@@ -44,66 +44,10 @@
           "required": false,
           "description": "The size of the button."
         },
-        "pressed": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be in a pressed state."
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be disabled."
-        },
         "className": {
           "type": "string",
           "required": false,
           "description": "Additional class name for custom styling."
-        }
-      }
-    },
-    {
-      "name": "MultiFunctionButton",
-      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
-      "description": "MultiFunctionButton component",
-      "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "default": "'medium'",
-          "description": "The size of the button"
-        },
-        "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic'",
-          "required": false,
-          "default": "'default'",
-          "description": "The variant of the button"
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "default": "false",
-          "description": "If true, the button will be in a disabled state"
-        },
-        "toggleMode": {
-          "type": "boolean",
-          "required": false,
-          "default": "false",
-          "description": "If true, the button will toggle between light and dark mode"
-        },
-        "icon": {
-          "type": "React.ReactNode",
-          "required": false,
-          "description": "Optional icon to display within the button"
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional className for styling overrides"
-        },
-        "onClick": {
-          "type": "() => void",
-          "required": false,
-          "description": "Click event handler"
         }
       }
     }
