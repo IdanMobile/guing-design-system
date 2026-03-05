@@ -16,11 +16,14 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['outlined', 'filled', 'standard'],
+        options: ['default', 'flat', 'stroked'],
       },
     },
     disabled: {
       control: 'boolean',
+    },
+    className: {
+      control: 'text',
     },
   },
 } as Meta;
@@ -30,15 +33,27 @@ const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
-  variant: 'outlined',
+  variant: 'default',
   disabled: false,
-  placeholder: 'Enter text',
+};
+
+export const Flat = Template.bind({});
+Flat.args = {
+  size: 'medium',
+  variant: 'flat',
+  disabled: false,
+};
+
+export const Stroked = Template.bind({});
+Stroked.args = {
+  size: 'medium',
+  variant: 'stroked',
+  disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   size: 'medium',
-  variant: 'outlined',
+  variant: 'default',
   disabled: true,
-  placeholder: 'Disabled text field',
 };

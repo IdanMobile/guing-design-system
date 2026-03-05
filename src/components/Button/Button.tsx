@@ -1,14 +1,20 @@
 // Button.tsx
-import React from 'react';
+import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames';
 
-export type ButtonVariant = 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi' | 'pressed' | 'disabled' | 'icon';
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
    */
-  variant?: ButtonVariant;
+  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'icon';
+  /**
+   * The size of the button.
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * If true, the button will be in a pressed state.
+   */
+  pressed?: boolean;
   /**
    * If true, the button will be disabled.
    */
@@ -19,8 +25,10 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   className?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
+  size = 'medium',
+  pressed = false,
   disabled = false,
   className,
   children,
@@ -32,10 +40,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     'button--stroked': variant === 'stroked',
     'button--basic': variant === 'basic',
     'button--toggle': variant === 'toggle',
-    'button--multi': variant === 'multi',
-    'button--pressed': variant === 'pressed',
-    'button--disabled': disabled || variant === 'disabled',
+    'button--multi-function': variant === 'multi-function',
     'button--icon': variant === 'icon',
+    'button--small': size === 'small',
+    'button--medium': size === 'medium',
+    'button--large': size === 'large',
+    'button--pressed': pressed,
+    'button--disabled': disabled,
   });
 
   return (
@@ -49,8 +60,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     </button>
   );
 });
-
-Button.displayName = 'Button';
 
 export default Button;
 export { Button };
