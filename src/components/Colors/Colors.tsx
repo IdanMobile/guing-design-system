@@ -1,8 +1,9 @@
 import React from 'react';
-import { designTokens } from '../../design-tokens';
+import tokens from '../../design-tokens/tokens.json';
+import { ColorToken } from '../../design-tokens';
 
 export const Colors = () => {
-  const colors = (designTokens as any).colors || [];
+  const colors = (tokens as any).colors || [];
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
@@ -11,7 +12,7 @@ export const Colors = () => {
         <p style={{ color: '#666' }}>No colors found. Sync tokens from Figma to see them here.</p>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '2rem' }}>
-          {colors.map((color: any) => (
+          {colors.map((color: ColorToken) => (
             <div key={color.name} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               <div style={{ 
                 width: '100%', 
