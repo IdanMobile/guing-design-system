@@ -1,6 +1,6 @@
 {
-  "version": "0.0.4",
-  "generatedAt": "2026-03-05T13:09:30.046Z",
+  "version": "0.0.8",
+  "generatedAt": "2026-03-05T13:49:11.470Z",
   "components": [
     {
       "name": "TextField",
@@ -8,24 +8,24 @@
       "description": "TextField component",
       "props": {
         "variant": {
-          "type": "'default' | 'dialog' | 'section'",
+          "type": "'default' | 'flat' | 'stroked'",
           "required": false,
-          "description": "Background color variant for the text field"
+          "description": "The variant of the text field"
         },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "Size of the text field"
+          "description": "The size of the text field"
         },
         "disabled": {
           "type": "boolean",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "If true, the text field will be disabled"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional class name for styling"
         }
       }
     },
@@ -39,32 +39,27 @@
           "required": false,
           "description": "The variant of the button."
         },
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the button."
-        },
-        "pressed": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be in a pressed state."
-        },
         "disabled": {
           "type": "boolean",
           "required": false,
           "description": "If true, the button will be disabled."
         },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling."
+          "description": "Additional class names to apply to the button."
         }
       }
     },
     {
-      "name": "MultiFunctionButton",
-      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
-      "description": "MultiFunctionButton component",
+      "name": "LightDarkModeToggle",
+      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
+      "description": "LightDarkModeToggle component",
       "props": {
         "size": {
           "type": "'small' | 'medium' | 'large'",
@@ -73,7 +68,7 @@
           "description": "The size of the button"
         },
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "type": "'default' | 'flat' | 'stroked'",
           "required": false,
           "default": "'default'",
           "description": "The variant of the button"
@@ -82,28 +77,49 @@
           "type": "boolean",
           "required": false,
           "default": "false",
-          "description": "If true, the button will be in a disabled state"
-        },
-        "toggleMode": {
-          "type": "boolean",
-          "required": false,
-          "default": "false",
-          "description": "If true, the button will toggle between light and dark mode"
-        },
-        "icon": {
-          "type": "React.ReactNode",
-          "required": false,
-          "description": "Optional icon to display within the button"
+          "description": "Whether the button is disabled"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional className for styling overrides"
+          "description": "Additional class name for styling"
+        }
+      }
+    },
+    {
+      "name": "MultiFunctionButton",
+      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
+      "description": "MultiFunctionButton component",
+      "props": {
+        "children": {
+          "type": "React.ReactNode",
+          "required": true,
+          "description": "The content of the button, typically a string or an icon."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button.\n'small' | 'medium' | 'large'"
+        },
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked'",
+          "required": false,
+          "description": "The variant of the button.\n'default' | 'flat' | 'stroked'"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
         },
         "onClick": {
           "type": "() => void",
           "required": false,
-          "description": "Click event handler"
+          "description": "Optional click handler."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names for custom styling."
         }
       }
     }

@@ -1,83 +1,91 @@
 // MultiFunctionButton.tsx
-import React from 'react';
+import React, { forwardRef } from 'react';
+import { CSSProperties } from 'react';
 
 interface MultiFunctionButtonProps {
   /**
-   * The size of the button
-   * @default 'medium'
+   * The content of the button, typically a string or an icon.
+   */
+  children: React.ReactNode;
+  /**
+   * The size of the button.
+   * 'small' | 'medium' | 'large'
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * The variant of the button
-   * @default 'default'
+   * The variant of the button.
+   * 'default' | 'flat' | 'stroked'
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic';
+  variant?: 'default' | 'flat' | 'stroked';
   /**
-   * If true, the button will be in a disabled state
-   * @default false
+   * If true, the button will be disabled.
    */
   disabled?: boolean;
   /**
-   * If true, the button will toggle between light and dark mode
-   * @default false
-   */
-  toggleMode?: boolean;
-  /**
-   * Optional icon to display within the button
-   */
-  icon?: React.ReactNode;
-  /**
-   * Additional className for styling overrides
-   */
-  className?: string;
-  /**
-   * Click event handler
+   * Optional click handler.
    */
   onClick?: () => void;
+  /**
+   * Additional class names for custom styling.
+   */
+  className?: string;
 }
 
-const MultiFunctionButton = React.forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
+const MultiFunctionButton = forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
+  children,
   size = 'medium',
   variant = 'default',
   disabled = false,
-  toggleMode = false,
-  icon,
-  className,
   onClick,
+  className,
 }, ref) => {
-  const styles = {
-    button: {
-      padding: size === 'small' ? '8px 12px' : size === 'large' ? '16px 24px' : '12px 18px',
-      backgroundColor: variant === 'flat' ? 'transparent' : variant === 'stroked' ? 'transparent' : 'var(--color-primary-buttons)',
-      border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
-      color: disabled ? 'var(--color-disabled-text)' : 'var(--color-white)',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      fontFamily: 'var(--font-large-header-*)',
-      fontSize: 'var(--font-large-header-*)',
-      fontWeight: 600,
-      opacity: disabled ? 0.6 : 1,
-      transition: 'background-color 0.3s',
-      ...(toggleMode && { backgroundColor: 'var(--color-section)' }),
-    },
+  const getSizeStyles = (): CSSProperties => {
+    switch (size) {
+      case 'small':
+        return { fontSize: '12px', padding: '6px 12px' };
+      case 'large':
+        return { fontSize: '18px', padding: '12px 24px' };
+      default:
+        return { fontSize: '14px', padding: '8px 16px' };
+    }
+  };
+
+  const getVariantStyles = (): CSSProperties => {
+    switch (variant) {
+      case 'flat':
+        return { backgroundColor: 'transparent', border: 'none' };
+      case 'stroked':
+        return { backgroundColor: 'transparent', border: `1px solid var(--color-divider-stroke)` };
+      default:
+        return { backgroundColor: 'var(--color-primary-buttons)', border: 'none' };
+    }
+  };
+
+  const styles: CSSProperties = {
+    ...getSizeStyles(),
+    ...getVariantStyles(),
+    color: disabled ? 'var(--color-disabled-text)' : 'var(--color-white)',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.6 : 1,
+    borderRadius: '4px',
+    transition: 'background-color 0.3s',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   return (
     <button
       ref={ref}
-      style={styles.button}
+      style={styles}
+      onClick={disabled ? undefined : onClick}
       className={className}
-      onClick={onClick}
       disabled={disabled}
     >
-      {icon && <span>{icon}</span>}
-      <span>MultiFunction Button</span>
+      {children}
     </button>
   );
 });
 
-export default MultiFunctionButton;
 export { MultiFunctionButton };
+export default MultiFunctionButton;

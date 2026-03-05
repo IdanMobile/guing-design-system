@@ -10,7 +10,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'dialog', 'section'],
+        options: ['default', 'flat', 'stroked'],
       },
     },
     size: {
@@ -35,20 +35,23 @@ Default.args = {
   variant: 'default',
   size: 'medium',
   disabled: false,
+  placeholder: 'Enter text...',
 };
 
-export const DialogVariant = Template.bind({});
-DialogVariant.args = {
-  variant: 'dialog',
+export const Flat = Template.bind({});
+Flat.args = {
+  variant: 'flat',
   size: 'medium',
   disabled: false,
+  placeholder: 'Enter text...',
 };
 
-export const SectionVariant = Template.bind({});
-SectionVariant.args = {
-  variant: 'section',
+export const Stroked = Template.bind({});
+Stroked.args = {
+  variant: 'stroked',
   size: 'medium',
   disabled: false,
+  placeholder: 'Enter text...',
 };
 
 export const Disabled = Template.bind({});
@@ -56,4 +59,5 @@ Disabled.args = {
   variant: 'default',
   size: 'medium',
   disabled: true,
+  placeholder: 'Disabled',
 };
