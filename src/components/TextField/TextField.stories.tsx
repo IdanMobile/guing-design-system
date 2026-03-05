@@ -7,16 +7,16 @@ export default {
   title: 'Components/TextField',
   component: TextField,
   argTypes: {
-    variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'dialog', 'section'],
-      },
-    },
     size: {
       control: {
         type: 'select',
         options: ['small', 'medium', 'large'],
+      },
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: ['default', 'outlined', 'filled'],
       },
     },
     disabled: {
@@ -32,28 +32,28 @@ const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  size: 'medium',
   variant: 'default',
-  size: 'medium',
   disabled: false,
 };
 
-export const DialogVariant = Template.bind({});
-DialogVariant.args = {
-  variant: 'dialog',
+export const Outlined = Template.bind({});
+Outlined.args = {
   size: 'medium',
+  variant: 'outlined',
   disabled: false,
 };
 
-export const SectionVariant = Template.bind({});
-SectionVariant.args = {
-  variant: 'section',
+export const Filled = Template.bind({});
+Filled.args = {
   size: 'medium',
+  variant: 'filled',
   disabled: false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  variant: 'default',
   size: 'medium',
+  variant: 'default',
   disabled: true,
 };
