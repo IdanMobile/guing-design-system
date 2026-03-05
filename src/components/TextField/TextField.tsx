@@ -1,41 +1,62 @@
 // TextField.tsx
 import React, { InputHTMLAttributes } from 'react';
-import classNames from 'classnames';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
-   * The size of the text field
+   * Background color variant for the text field
+   */
+  variant?: 'default' | 'dialog' | 'section';
+  /**
+   * Size of the text field
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * The variant of the text field
-   */
-  variant?: 'outlined' | 'filled' | 'standard';
-  /**
-   * If true, the text field will be disabled
+   * Whether the text field is disabled
    */
   disabled?: boolean;
   /**
-   * Additional class names to apply to the text field
+   * Additional class name for custom styling
    */
   className?: string;
 }
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ size = 'medium', variant = 'outlined', disabled = false, className, ...props }, ref) => {
-    const textFieldClass = classNames(
-      'text-field',
-      `text-field--${size}`,
-      `text-field--${variant}`,
-      { 'text-field--disabled': disabled },
-      className
-    );
+  ({ variant = 'default', size = 'medium', disabled = false, className, ...props }, ref) => {
+    const backgroundColor = {
+      default: 'var(--color-white)',
+      dialog: 'var(--color-dialog-sections-master-table)',
+      section: 'var(--color-section)',
+    }[variant];
+
+    const padding = {
+      small: '4px 8px',
+      medium: '8px 16px',
+      large: '12px 24px',
+    }[size];
+
+    const styles = {
+      input: {
+        backgroundColor,
+        padding,
+        border: '1px solid var(--color-divider-stroke)',
+        borderRadius: '4px',
+        fontSize: '14px',
+        lineHeight: '20px',
+        color: 'var(--color-text)',
+        outline: 'none',
+        width: '100%',
+        boxSizing: 'border-box' as const,
+        cursor: disabled ? 'not-allowed' : 'text',
+        opacity: disabled ? 0.5 : 1,
+      },
+    };
 
     return (
       <input
         ref={ref}
-        className={textFieldClass}
+        style={styles.input}
         disabled={disabled}
+        className={className}
         {...props}
       />
     );
@@ -44,38 +65,3 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
 export { TextField };
 export default TextField;
-
-// CSS (Assuming CSS Modules or a similar setup)
-// .text-field {
-//   font-family: var(--font-inter-regular);
-//   color: var(--color-text);
-//   background-color: var(--color-white);
-//   border: 1px solid var(--color-divider-stroke);
-//   padding: 8px;
-//   border-radius: 4px;
-//   transition: border-color 0.3s ease;
-// }
-// .text-field--small {
-//   font-size: 12px;
-// }
-// .text-field--medium {
-//   font-size: 14px;
-// }
-// .text-field--large {
-//   font-size: 16px;
-// }
-// .text-field--outlined {
-//   border: 1px solid var(--color-primary-text-field);
-// }
-// .text-field--filled {
-//   background-color: var(--color-buttons-input);
-// }
-// .text-field--standard {
-//   border-bottom: 1px solid var(--color-divider-stroke);
-//   border-radius: 0;
-// }
-// .text-field--disabled {
-//   color: var(--color-disabled-text);
-//   background-color: var(--color-disabled);
-//   cursor: not-allowed;
-// }
