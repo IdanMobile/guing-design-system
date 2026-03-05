@@ -1,21 +1,33 @@
 // Button.tsx
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
+   * - 'default': Standard button style
+   * - 'flat': Button with no elevation
+   * - 'stroked': Button with a border
+   * - 'basic': Minimal button style
+   * - 'icon': Button with an icon
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
   /**
    * The size of the button.
+   * - 'small': Small button
+   * - 'medium': Medium button
+   * - 'large': Large button
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * If true, the button will be in a pressed state.
+   */
+  pressed?: boolean;
   /**
    * If true, the button will be disabled.
    */
   disabled?: boolean;
   /**
-   * Additional class name for custom styling.
+   * Additional class names to apply to the button.
    */
   className?: string;
 }
@@ -23,6 +35,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
   size = 'medium',
+  pressed = false,
   disabled = false,
   className = '',
   children,
@@ -30,11 +43,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref) => {
   const styles = {
     base: {
-      padding: '10px 20px',
+      padding: '8px 16px',
+      fontSize: 'var(--font-inter-smi-bold-*)',
       borderRadius: '4px',
-      fontFamily: 'var(--font-inter-medium-*)',
-      fontSize: '14px',
       cursor: 'pointer',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       transition: 'background-color 0.3s',
     },
     variants: {
@@ -62,36 +77,40 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     },
     sizes: {
       small: {
-        padding: '5px 10px',
-        fontSize: '12px',
+        padding: '4px 8px',
+        fontSize: 'var(--font-bold-small-text-*)',
       },
       medium: {
-        padding: '10px 20px',
-        fontSize: '14px',
+        padding: '8px 16px',
+        fontSize: 'var(--font-inter-smi-bold-*)',
       },
       large: {
-        padding: '15px 30px',
-        fontSize: '16px',
+        padding: '12px 24px',
+        fontSize: 'var(--font-large-header-*)',
       },
     },
-    disabled: {
-      backgroundColor: 'var(--color-disabled)',
-      color: 'var(--color-disabled-text)',
-      cursor: 'not-allowed',
+    states: {
+      pressed: {
+        backgroundColor: 'var(--color-hover)',
+      },
+      disabled: {
+        backgroundColor: 'var(--color-disabled)',
+        color: 'var(--color-disabled-text)',
+        cursor: 'not-allowed',
+      },
     },
-  };
-
-  const combinedStyles = {
-    ...styles.base,
-    ...styles.variants[variant],
-    ...styles.sizes[size],
-    ...(disabled ? styles.disabled : {}),
   };
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
+      style={{
+        ...styles.base,
+        ...styles.variants[variant],
+        ...styles.sizes[size],
+        ...(pressed && styles.states.pressed),
+        ...(disabled && styles.states.disabled),
+      }}
       className={className}
       disabled={disabled}
       {...props}
@@ -101,5 +120,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   );
 });
 
-export { Button };
 export default Button;
+export { Button };
