@@ -4,4 +4,5 @@
 export * from './design-tokens';
 
 // Components
-export * from './components/Welcome/Welcome';
+export * from './components/Text Field/Text Field';
+export * from './components/Button/Button';

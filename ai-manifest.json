@@ -1,9 +1,59 @@
 {
-  "version": "0.0.0",
-  "generatedAt": "2026-03-05T00:50:43.656Z",
-  "components": [],
+  "version": "0.0.1",
+  "generatedAt": "2026-03-05T01:03:23.215Z",
+  "components": [
+    {
+      "name": "Text Field",
+      "path": "src/components/Text Field/Text Field.tsx",
+      "description": "Text Field component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'light' | 'dark'",
+          "required": false,
+          "description": "The variant of the text field, which affects its background color."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the text field."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the text field will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the text field."
+        }
+      }
+    },
+    {
+      "name": "Button",
+      "path": "src/components/Button/Button.tsx",
+      "description": "Button component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon'",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    }
+  ],
   "tokens": {
-    "colors": 0,
-    "typography": 0
+    "colors": 28,
+    "typography": 24
   }
 }
