@@ -10,7 +10,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'dialog', 'section'],
+        options: ['default', 'light', 'dark'],
       },
     },
     size: {
@@ -37,23 +37,27 @@ Default.args = {
   disabled: false,
 };
 
-export const DialogVariant = Template.bind({});
-DialogVariant.args = {
-  variant: 'dialog',
-  size: 'medium',
-  disabled: false,
+export const LightVariant = Template.bind({});
+LightVariant.args = {
+  variant: 'light',
 };
 
-export const SectionVariant = Template.bind({});
-SectionVariant.args = {
-  variant: 'section',
-  size: 'medium',
-  disabled: false,
+export const DarkVariant = Template.bind({});
+DarkVariant.args = {
+  variant: 'dark',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  variant: 'default',
-  size: 'medium',
   disabled: true,
+};
+
+export const SmallSize = Template.bind({});
+SmallSize.args = {
+  size: 'small',
+};
+
+export const LargeSize = Template.bind({});
+LargeSize.args = {
+  size: 'large',
 };

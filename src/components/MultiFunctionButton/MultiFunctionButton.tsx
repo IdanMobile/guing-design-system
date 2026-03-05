@@ -1,83 +1,104 @@
 // MultiFunctionButton.tsx
-import React from 'react';
+import React, { forwardRef, ButtonHTMLAttributes } from 'react';
 
-interface MultiFunctionButtonProps {
+interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The size of the button
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * The variant of the button
-   * @default 'default'
+   * The variant of the button.
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
-   * If true, the button will be in a disabled state
-   * @default false
+   * The size of the button.
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * If true, the button will be disabled.
    */
   disabled?: boolean;
   /**
-   * If true, the button will toggle between light and dark mode
-   * @default false
-   */
-  toggleMode?: boolean;
-  /**
-   * Optional icon to display within the button
-   */
-  icon?: React.ReactNode;
-  /**
-   * Additional className for styling overrides
+   * Additional class names for styling.
    */
   className?: string;
-  /**
-   * Click event handler
-   */
-  onClick?: () => void;
 }
 
-const MultiFunctionButton = React.forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
-  size = 'medium',
+const MultiFunctionButton = forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
   variant = 'default',
+  size = 'medium',
   disabled = false,
-  toggleMode = false,
-  icon,
-  className,
-  onClick,
+  className = '',
+  children,
+  ...props
 }, ref) => {
   const styles = {
-    button: {
-      padding: size === 'small' ? '8px 12px' : size === 'large' ? '16px 24px' : '12px 18px',
-      backgroundColor: variant === 'flat' ? 'transparent' : variant === 'stroked' ? 'transparent' : 'var(--color-primary-buttons)',
-      border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
-      color: disabled ? 'var(--color-disabled-text)' : 'var(--color-white)',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      fontFamily: 'var(--font-large-header-*)',
-      fontSize: 'var(--font-large-header-*)',
-      fontWeight: 600,
-      opacity: disabled ? 0.6 : 1,
+    base: {
+      fontFamily: 'var(--font-inter-medium-*)',
+      fontSize: '14px',
+      fontWeight: 500,
+      padding: '10px 20px',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
       transition: 'background-color 0.3s',
-      ...(toggleMode && { backgroundColor: 'var(--color-section)' }),
+      display: 'inline-block',
     },
+    variants: {
+      default: {
+        backgroundColor: 'var(--color-primary-buttons)',
+        color: 'var(--color-white)',
+      },
+      flat: {
+        backgroundColor: 'transparent',
+        color: 'var(--color-primary-buttons)',
+      },
+      stroked: {
+        backgroundColor: 'transparent',
+        color: 'var(--color-primary-buttons)',
+        border: '1px solid var(--color-primary-buttons)',
+      },
+      basic: {
+        backgroundColor: 'var(--color-buttons-input)',
+        color: 'var(--color-buttons-text-field)',
+      },
+    },
+    sizes: {
+      small: {
+        padding: '5px 10px',
+        fontSize: '12px',
+      },
+      medium: {
+        padding: '10px 20px',
+        fontSize: '14px',
+      },
+      large: {
+        padding: '15px 30px',
+        fontSize: '16px',
+      },
+    },
+    disabled: {
+      backgroundColor: 'var(--color-disabled)',
+      color: 'var(--color-disabled-text)',
+      cursor: 'not-allowed',
+    },
+  };
+
+  const combinedStyles = {
+    ...styles.base,
+    ...styles.variants[variant],
+    ...styles.sizes[size],
+    ...(disabled && styles.disabled),
   };
 
   return (
     <button
       ref={ref}
-      style={styles.button}
-      className={className}
-      onClick={onClick}
+      style={combinedStyles}
       disabled={disabled}
+      className={className}
+      {...props}
     >
-      {icon && <span>{icon}</span>}
-      <span>MultiFunction Button</span>
+      {children}
     </button>
   );
 });
 
-export default MultiFunctionButton;
 export { MultiFunctionButton };
+export default MultiFunctionButton;

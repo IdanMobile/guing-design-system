@@ -1,6 +1,6 @@
 // Button.stories.tsx
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
 
 export default {
@@ -13,52 +13,44 @@ export default {
         options: ['default', 'flat', 'stroked', 'basic'],
       },
     },
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
-    },
-    pressed: {
-      control: 'boolean',
-    },
     disabled: {
       control: 'boolean',
+    },
+    children: {
+      control: 'text',
     },
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args}>Button</Button>;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   variant: 'default',
-  size: 'medium',
-  pressed: false,
-  disabled: false,
+  children: 'Default Button',
 };
 
 export const Flat = Template.bind({});
 Flat.args = {
   variant: 'flat',
+  children: 'Flat Button',
 };
 
 export const Stroked = Template.bind({});
 Stroked.args = {
   variant: 'stroked',
+  children: 'Stroked Button',
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
   variant: 'basic',
-};
-
-export const Pressed = Template.bind({});
-Pressed.args = {
-  pressed: true,
+  children: 'Basic Button',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  variant: 'default',
   disabled: true,
+  children: 'Disabled Button',
 };

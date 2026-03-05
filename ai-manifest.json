@@ -1,6 +1,6 @@
 {
-  "version": "0.0.4",
-  "generatedAt": "2026-03-05T13:09:30.046Z",
+  "version": "0.0.8",
+  "generatedAt": "2026-03-05T14:13:57.743Z",
   "components": [
     {
       "name": "TextField",
@@ -8,24 +8,24 @@
       "description": "TextField component",
       "props": {
         "variant": {
-          "type": "'default' | 'dialog' | 'section'",
+          "type": "'default' | 'light' | 'dark'",
           "required": false,
-          "description": "Background color variant for the text field"
+          "description": "The variant of the text field, affecting its background color."
         },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "Size of the text field"
+          "description": "The size of the text field."
         },
         "disabled": {
           "type": "boolean",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "If true, the text field will be disabled."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional class name for custom styling."
         }
       }
     },
@@ -37,17 +37,7 @@
         "variant": {
           "type": "'default' | 'flat' | 'stroked' | 'basic'",
           "required": false,
-          "description": "The variant of the button."
-        },
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the button."
-        },
-        "pressed": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be in a pressed state."
+          "description": "The variant of the button.\n- 'default': Standard button with background color.\n- 'flat': Button with no background color.\n- 'stroked': Button with a border.\n- 'basic': Simple text button."
         },
         "disabled": {
           "type": "boolean",
@@ -62,48 +52,93 @@
       }
     },
     {
-      "name": "MultiFunctionButton",
-      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
-      "description": "MultiFunctionButton component",
+      "name": "LightDarkModeToggle",
+      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
+      "description": "LightDarkModeToggle component",
       "props": {
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "default": "'medium'",
-          "description": "The size of the button"
+          "description": "The size of the toggle button"
         },
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "type": "'default' | 'outlined' | 'text'",
           "required": false,
-          "default": "'default'",
-          "description": "The variant of the button"
+          "description": "The variant of the toggle button"
         },
-        "disabled": {
-          "type": "boolean",
+        "initialState": {
+          "type": "'light' | 'dark'",
           "required": false,
-          "default": "false",
-          "description": "If true, the button will be in a disabled state"
-        },
-        "toggleMode": {
-          "type": "boolean",
-          "required": false,
-          "default": "false",
-          "description": "If true, the button will toggle between light and dark mode"
-        },
-        "icon": {
-          "type": "React.ReactNode",
-          "required": false,
-          "description": "Optional icon to display within the button"
+          "description": "The initial state of the toggle button"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional className for styling overrides"
+          "description": "Additional class name for styling"
+        }
+      }
+    },
+    {
+      "name": "MultiFunctionButton",
+      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
+      "description": "MultiFunctionButton component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names for styling."
+        }
+      }
+    },
+    {
+      "name": "IconButton",
+      "path": "src/components/IconButton/IconButton.tsx",
+      "description": "IconButton component",
+      "props": {
+        "icon": {
+          "type": "React.ReactNode",
+          "required": true,
+          "description": "The icon to display inside the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button.\n'small' | 'medium' | 'large'"
+        },
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked'",
+          "required": false,
+          "description": "The variant of the button.\n'default' | 'flat' | 'stroked'"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
         },
         "onClick": {
           "type": "() => void",
           "required": false,
-          "description": "Click event handler"
+          "description": "Click event handler."
         }
       }
     }

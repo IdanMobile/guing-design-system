@@ -1,53 +1,71 @@
 // MultiFunctionButton.stories.tsx
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import MultiFunctionButton from './MultiFunctionButton';
+import { Meta, Story } from '@storybook/react';
+import MultiFunctionButton, { MultiFunctionButtonProps } from './MultiFunctionButton';
 
 export default {
   title: 'Components/MultiFunctionButton',
   component: MultiFunctionButton,
   argTypes: {
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
-    },
     variant: {
       control: {
         type: 'select',
         options: ['default', 'flat', 'stroked', 'basic'],
       },
     },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'medium', 'large'],
+      },
+    },
     disabled: {
       control: 'boolean',
     },
-    toggleMode: {
-      control: 'boolean',
-    },
-    icon: {
+    children: {
       control: 'text',
     },
-    className: {
-      control: 'text',
-    },
-    onClick: { action: 'clicked' },
   },
 } as Meta;
 
-const Template: Story = (args) => <MultiFunctionButton {...args} />;
+const Template: Story<MultiFunctionButtonProps> = (args) => <MultiFunctionButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  size: 'medium',
   variant: 'default',
+  size: 'medium',
   disabled: false,
-  toggleMode: false,
-  icon: null,
+  children: 'Button',
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...Default.args,
-  icon: '🔔',
+export const Flat = Template.bind({});
+Flat.args = {
+  variant: 'flat',
+  size: 'medium',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Stroked = Template.bind({});
+Stroked.args = {
+  variant: 'stroked',
+  size: 'medium',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Basic = Template.bind({});
+Basic.args = {
+  variant: 'basic',
+  size: 'medium',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  variant: 'default',
+  size: 'medium',
+  disabled: true,
+  children: 'Button',
 };
