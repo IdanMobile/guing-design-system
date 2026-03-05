@@ -5,15 +5,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
   /**
    * The size of the button.
    */
   size?: 'small' | 'medium' | 'large';
-  /**
-   * If true, the button will be in a pressed state.
-   */
-  pressed?: boolean;
   /**
    * If true, the button will be disabled.
    */
@@ -27,19 +23,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
   size = 'medium',
-  pressed = false,
   disabled = false,
-  className,
+  className = '',
   children,
   ...props
 }, ref) => {
   const styles = {
     base: {
-      fontFamily: 'var(--font-large-header)',
-      padding: size === 'small' ? '8px 16px' : size === 'large' ? '16px 32px' : '12px 24px',
+      padding: '10px 20px',
       borderRadius: '4px',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      opacity: disabled ? 0.5 : 1,
+      fontFamily: 'var(--font-inter-medium-*)',
+      fontSize: '14px',
+      cursor: 'pointer',
       transition: 'background-color 0.3s',
     },
     variants: {
@@ -60,16 +55,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         backgroundColor: 'var(--color-buttons-input)',
         color: 'var(--color-buttons-text-field)',
       },
+      icon: {
+        backgroundColor: 'transparent',
+        color: 'var(--color-icons-1)',
+      },
     },
-    pressed: {
-      backgroundColor: 'var(--color-hover)',
+    sizes: {
+      small: {
+        padding: '5px 10px',
+        fontSize: '12px',
+      },
+      medium: {
+        padding: '10px 20px',
+        fontSize: '14px',
+      },
+      large: {
+        padding: '15px 30px',
+        fontSize: '16px',
+      },
+    },
+    disabled: {
+      backgroundColor: 'var(--color-disabled)',
+      color: 'var(--color-disabled-text)',
+      cursor: 'not-allowed',
     },
   };
 
   const combinedStyles = {
     ...styles.base,
     ...styles.variants[variant],
-    ...(pressed && !disabled ? styles.pressed : {}),
+    ...styles.sizes[size],
+    ...(disabled ? styles.disabled : {}),
   };
 
   return (

@@ -1,7 +1,7 @@
 // MultiFunctionButton.stories.tsx
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import MultiFunctionButton from './MultiFunctionButton';
+import { Meta, Story } from '@storybook/react';
+import MultiFunctionButton, { MultiFunctionButtonProps } from './MultiFunctionButton';
 
 export default {
   title: 'Components/MultiFunctionButton',
@@ -22,32 +22,50 @@ export default {
     disabled: {
       control: 'boolean',
     },
-    toggleMode: {
-      control: 'boolean',
-    },
-    icon: {
-      control: 'text',
-    },
     className: {
       control: 'text',
     },
-    onClick: { action: 'clicked' },
   },
 } as Meta;
 
-const Template: Story = (args) => <MultiFunctionButton {...args} />;
+const Template: Story<MultiFunctionButtonProps> = (args) => <MultiFunctionButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
   variant: 'default',
   disabled: false,
-  toggleMode: false,
-  icon: null,
+  children: 'Button',
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...Default.args,
-  icon: '🔔',
+export const Flat = Template.bind({});
+Flat.args = {
+  size: 'medium',
+  variant: 'flat',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Stroked = Template.bind({});
+Stroked.args = {
+  size: 'medium',
+  variant: 'stroked',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Basic = Template.bind({});
+Basic.args = {
+  size: 'medium',
+  variant: 'basic',
+  disabled: false,
+  children: 'Button',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  size: 'medium',
+  variant: 'default',
+  disabled: true,
+  children: 'Button',
 };
