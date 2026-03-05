@@ -16,11 +16,14 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['outlined', 'filled', 'standard'],
+        options: ['outlined', 'filled'],
       },
     },
     disabled: {
       control: 'boolean',
+    },
+    className: {
+      control: 'text',
     },
   },
 } as Meta;
@@ -40,5 +43,5 @@ Disabled.args = {
   size: 'medium',
   variant: 'outlined',
   disabled: true,
-  placeholder: 'Disabled text field',
+  placeholder: 'Disabled',
 };

@@ -1,9 +1,64 @@
 {
-  "version": "0.0.0",
-  "generatedAt": "2026-03-05T12:41:25.875Z",
-  "components": [],
+  "version": "0.0.4",
+  "generatedAt": "2026-03-05T12:58:09.218Z",
+  "components": [
+    {
+      "name": "TextField",
+      "path": "src/components/TextField/TextField.tsx",
+      "description": "A basic text input field for user input.",
+      "props": {
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the text field"
+        },
+        "variant": {
+          "type": "'outlined' | 'filled'",
+          "required": false,
+          "description": "The variant of the text field"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the text field is disabled"
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Custom class name for styling"
+        }
+      }
+    },
+    {
+      "name": "Button",
+      "path": "src/components/Button/Button.tsx",
+      "description": "Button component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon'",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    }
+  ],
   "tokens": {
-    "colors": 0,
-    "typography": 0
+    "colors": 28,
+    "typography": 24
   }
 }

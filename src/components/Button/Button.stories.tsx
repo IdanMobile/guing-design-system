@@ -1,7 +1,7 @@
 // Button.stories.tsx
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Button, { ButtonProps, ButtonVariant } from './Button';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button from './Button';
 
 export default {
   title: 'Components/Button',
@@ -10,7 +10,13 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic', 'toggle', 'multi', 'pressed', 'disabled', 'icon'],
+        options: ['default', 'flat', 'stroked', 'basic', 'toggle', 'multi-function', 'pressed', 'disabled', 'icon'],
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'medium', 'large'],
       },
     },
     disabled: {
@@ -20,61 +26,70 @@ export default {
       control: 'text',
     },
   },
-} as Meta;
+} as ComponentMeta<typeof Button>;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   variant: 'default',
-  children: 'Default Button',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Flat = Template.bind({});
 Flat.args = {
   variant: 'flat',
-  children: 'Flat Button',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Stroked = Template.bind({});
 Stroked.args = {
   variant: 'stroked',
-  children: 'Stroked Button',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
   variant: 'basic',
-  children: 'Basic Button',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Toggle = Template.bind({});
 Toggle.args = {
   variant: 'toggle',
-  children: 'Toggle Button',
+  size: 'medium',
+  children: 'Button',
 };
 
-export const Multi = Template.bind({});
-Multi.args = {
-  variant: 'multi',
-  children: 'Multi-function Button',
+export const MultiFunction = Template.bind({});
+MultiFunction.args = {
+  variant: 'multi-function',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Pressed = Template.bind({});
 Pressed.args = {
   variant: 'pressed',
-  children: 'Pressed Button',
+  size: 'medium',
+  children: 'Button',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   variant: 'disabled',
-  children: 'Disabled Button',
+  size: 'medium',
+  children: 'Button',
   disabled: true,
 };
 
 export const Icon = Template.bind({});
 Icon.args = {
   variant: 'icon',
-  children: 'Icon Button',
+  size: 'medium',
+  children: '🔍',
 };
