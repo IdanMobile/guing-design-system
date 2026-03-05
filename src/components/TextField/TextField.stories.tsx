@@ -19,8 +19,11 @@ export default {
         options: ['default', 'outlined', 'filled'],
       },
     },
-    disabled: {
-      control: 'boolean',
+    state: {
+      control: {
+        type: 'select',
+        options: ['normal', 'disabled', 'error'],
+      },
     },
     className: {
       control: 'text',
@@ -34,26 +37,38 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
   variant: 'default',
-  disabled: false,
+  state: 'normal',
+  placeholder: 'Enter text here...',
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
   size: 'medium',
   variant: 'outlined',
-  disabled: false,
+  state: 'normal',
+  placeholder: 'Enter text here...',
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
   size: 'medium',
   variant: 'filled',
-  disabled: false,
+  state: 'normal',
+  placeholder: 'Enter text here...',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   size: 'medium',
   variant: 'default',
-  disabled: true,
+  state: 'disabled',
+  placeholder: 'Disabled text field',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  size: 'medium',
+  variant: 'default',
+  state: 'error',
+  placeholder: 'Error state',
 };

@@ -1,6 +1,5 @@
 // MultiFunctionButton.tsx
-import React, { forwardRef, ButtonHTMLAttributes } from 'react';
-import { CSSProperties } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
 interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -16,76 +15,91 @@ interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
    */
   disabled?: boolean;
   /**
-   * Additional class name for custom styling
+   * Additional class name for styling
    */
   className?: string;
 }
 
-const styles: Record<string, CSSProperties> = {
-  base: {
-    fontFamily: 'var(--font-secondery-text)',
-    fontSize: '20px',
-    fontWeight: 600,
-    padding: '10px 20px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  default: {
-    backgroundColor: 'var(--color-primary-buttons)',
-    color: 'var(--color-white)',
-  },
-  flat: {
-    backgroundColor: 'transparent',
-    color: 'var(--color-primary-buttons)',
-  },
-  stroked: {
-    backgroundColor: 'transparent',
-    border: '2px solid var(--color-primary-buttons)',
-    color: 'var(--color-primary-buttons)',
-  },
-  basic: {
-    backgroundColor: 'var(--color-buttons-input)',
-    color: 'var(--color-text)',
-  },
-  disabled: {
-    backgroundColor: 'var(--color-disabled)',
-    color: 'var(--color-disabled-text)',
-    cursor: 'not-allowed',
-  },
-  small: {
-    padding: '5px 10px',
-  },
-  medium: {
-    padding: '10px 20px',
-  },
-  large: {
-    padding: '15px 30px',
-  },
-};
+const MultiFunctionButton = React.forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
+  size = 'medium',
+  variant = 'default',
+  disabled = false,
+  className,
+  children,
+  ...props
+}, ref) => {
+  const styles = {
+    base: {
+      fontFamily: 'var(--font-secondery-text)',
+      fontSize: '20px',
+      fontWeight: 600,
+      padding: '10px 20px',
+      borderRadius: '4px',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'var(--color-text)',
+    },
+    size: {
+      small: {
+        padding: '5px 10px',
+        fontSize: '14px',
+      },
+      medium: {
+        padding: '10px 20px',
+        fontSize: '16px',
+      },
+      large: {
+        padding: '15px 30px',
+        fontSize: '18px',
+      },
+    },
+    variant: {
+      default: {
+        backgroundColor: 'var(--color-primary-buttons)',
+        border: 'none',
+      },
+      flat: {
+        backgroundColor: 'transparent',
+        border: 'none',
+      },
+      stroked: {
+        backgroundColor: 'transparent',
+        border: '2px solid var(--color-primary-buttons)',
+      },
+      basic: {
+        backgroundColor: 'var(--color-buttons-input)',
+        border: 'none',
+      },
+    },
+    disabled: {
+      backgroundColor: 'var(--color-disabled)',
+      cursor: 'not-allowed',
+      color: 'var(--color-disabled-text)',
+    },
+  };
 
-const MultiFunctionButton = forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(
-  ({ size = 'medium', variant = 'default', disabled = false, className, ...props }, ref) => {
-    const variantStyle = styles[variant];
-    const sizeStyle = styles[size];
-    const disabledStyle = disabled ? styles.disabled : {};
+  const combinedStyles = {
+    ...styles.base,
+    ...styles.size[size],
+    ...styles.variant[variant],
+    ...(disabled ? styles.disabled : {}),
+  };
 
-    return (
-      <button
-        ref={ref}
-        style={{
-          ...styles.base,
-          ...variantStyle,
-          ...sizeStyle,
-          ...disabledStyle,
-        }}
-        className={className}
-        disabled={disabled}
-        {...props}
-      />
-    );
-  }
-);
+  return (
+    <button
+      ref={ref}
+      style={combinedStyles}
+      className={className}
+      disabled={disabled}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+});
 
-export { MultiFunctionButton };
 export default MultiFunctionButton;
+export { MultiFunctionButton };
