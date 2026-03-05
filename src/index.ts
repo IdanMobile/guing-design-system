@@ -7,3 +7,6 @@ export * from './design-tokens';
 export * from './components/TextField/TextField';
 export * from './components/Button/Button';
 export * from './components/MultiFunctionButton/MultiFunctionButton';
+
+export * from './components/Colors/Colors';
+export * from './components/Typography/Typography';
