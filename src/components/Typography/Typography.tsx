@@ -25,7 +25,7 @@ export const Typography = () => {
                 letterSpacing: text.letterSpacing ? `${text.letterSpacing}px` : 'normal',
                 textTransform: text.textTransform as any || 'none',
               }}>
-                The quick brown fox jumps over the lazy dog
+                This is a crazy fox
               </div>
             </div>
           ))}
