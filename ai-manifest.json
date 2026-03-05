@@ -1,9 +1,59 @@
 {
-  "version": "0.0.0",
-  "generatedAt": "2026-03-05T12:11:56.411Z",
-  "components": [],
+  "version": "0.0.2",
+  "generatedAt": "2026-03-05T12:14:59.160Z",
+  "components": [
+    {
+      "name": "TextField",
+      "path": "src/components/TextField/TextField.tsx",
+      "description": "TextField component",
+      "props": {
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the text field"
+        },
+        "variant": {
+          "type": "'outlined' | 'filled' | 'standard'",
+          "required": false,
+          "description": "The variant of the text field"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the text field will be disabled"
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the text field"
+        }
+      }
+    },
+    {
+      "name": "Button",
+      "path": "src/components/Button/Button.tsx",
+      "description": "Button component",
+      "props": {
+        "variant": {
+          "type": "ButtonVariant",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    }
+  ],
   "tokens": {
-    "colors": 0,
-    "typography": 0
+    "colors": 28,
+    "typography": 24
   }
 }
