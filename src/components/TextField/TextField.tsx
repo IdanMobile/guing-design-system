@@ -1,67 +1,105 @@
 // TextField.tsx
-import React, { InputHTMLAttributes } from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
-   * Background color variant for the text field
-   */
-  variant?: 'default' | 'dialog' | 'section';
-  /**
-   * Size of the text field
+   * The size of the text field
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * Whether the text field is disabled
+   * The variant of the text field
    */
-  disabled?: boolean;
+  variant?: 'filled' | 'outlined' | 'standard';
   /**
-   * Additional class name for custom styling
+   * The state of the text field
+   */
+  state?: 'default' | 'error' | 'disabled';
+  /**
+   * Additional class name for styling
    */
   className?: string;
 }
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ variant = 'default', size = 'medium', disabled = false, className, ...props }, ref) => {
-    const backgroundColor = {
-      default: 'var(--color-white)',
-      dialog: 'var(--color-dialog-sections-master-table)',
-      section: 'var(--color-section)',
-    }[variant];
-
-    const padding = {
-      small: '4px 8px',
-      medium: '8px 16px',
-      large: '12px 24px',
-    }[size];
-
-    const styles = {
-      input: {
-        backgroundColor,
-        padding,
-        border: '1px solid var(--color-divider-stroke)',
-        borderRadius: '4px',
-        fontSize: '14px',
-        lineHeight: '20px',
-        color: 'var(--color-text)',
-        outline: 'none',
-        width: '100%',
-        boxSizing: 'border-box' as const,
-        cursor: disabled ? 'not-allowed' : 'text',
-        opacity: disabled ? 0.5 : 1,
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
+  size = 'medium',
+  variant = 'outlined',
+  state = 'default',
+  className,
+  ...props
+}, ref) => {
+  const styles = {
+    base: {
+      fontFamily: 'var(--font-inter-regular)',
+      border: '1px solid',
+      borderRadius: '4px',
+      padding: '8px',
+      outline: 'none',
+      transition: 'border-color 0.2s',
+    },
+    size: {
+      small: {
+        fontSize: '12px',
+        padding: '4px 8px',
       },
-    };
+      medium: {
+        fontSize: '14px',
+        padding: '6px 12px',
+      },
+      large: {
+        fontSize: '16px',
+        padding: '8px 16px',
+      },
+    },
+    variant: {
+      filled: {
+        backgroundColor: 'var(--color-buttons-input)',
+        borderColor: 'transparent',
+      },
+      outlined: {
+        backgroundColor: 'transparent',
+        borderColor: 'var(--color-divider-stroke)',
+      },
+      standard: {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+        borderBottom: '1px solid var(--color-divider-stroke)',
+      },
+    },
+    state: {
+      default: {
+        borderColor: 'var(--color-divider-stroke)',
+        color: 'var(--color-text)',
+      },
+      error: {
+        borderColor: 'var(--color-error)',
+        color: 'var(--color-error)',
+      },
+      disabled: {
+        borderColor: 'var(--color-disabled)',
+        color: 'var(--color-disabled-text)',
+        backgroundColor: 'var(--color-buttons-input)',
+        cursor: 'not-allowed',
+      },
+    },
+  };
 
-    return (
-      <input
-        ref={ref}
-        style={styles.input}
-        disabled={disabled}
-        className={className}
-        {...props}
-      />
-    );
-  }
-);
+  const combinedStyles = {
+    ...styles.base,
+    ...styles.size[size],
+    ...styles.variant[variant],
+    ...styles.state[state],
+  };
 
-export { TextField };
+  return (
+    <input
+      ref={ref}
+      style={combinedStyles}
+      className={className}
+      disabled={state === 'disabled'}
+      {...props}
+    />
+  );
+});
+
 export default TextField;
+export { TextField };

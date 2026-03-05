@@ -4,77 +4,93 @@ import React from 'react';
 interface MultiFunctionButtonProps {
   /**
    * The size of the button
-   * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
   /**
    * The variant of the button
-   * @default 'default'
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
-   * If true, the button will be in a disabled state
-   * @default false
+   * If true, the button will be disabled
    */
   disabled?: boolean;
   /**
-   * If true, the button will toggle between light and dark mode
-   * @default false
+   * The content of the button
    */
-  toggleMode?: boolean;
+  children: React.ReactNode;
   /**
-   * Optional icon to display within the button
-   */
-  icon?: React.ReactNode;
-  /**
-   * Additional className for styling overrides
-   */
-  className?: string;
-  /**
-   * Click event handler
+   * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Additional class names for styling
+   */
+  className?: string;
 }
 
 const MultiFunctionButton = React.forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
   size = 'medium',
   variant = 'default',
   disabled = false,
-  toggleMode = false,
-  icon,
-  className,
+  children,
   onClick,
+  className,
 }, ref) => {
   const styles = {
-    button: {
-      padding: size === 'small' ? '8px 12px' : size === 'large' ? '16px 24px' : '12px 18px',
-      backgroundColor: variant === 'flat' ? 'transparent' : variant === 'stroked' ? 'transparent' : 'var(--color-primary-buttons)',
-      border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
-      color: disabled ? 'var(--color-disabled-text)' : 'var(--color-white)',
+    base: {
+      padding: '8px 16px',
+      fontSize: 'var(--font-secondery-text)',
+      border: 'none',
+      borderRadius: '4px',
       cursor: disabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      fontFamily: 'var(--font-large-header-*)',
-      fontSize: 'var(--font-large-header-*)',
-      fontWeight: 600,
-      opacity: disabled ? 0.6 : 1,
-      transition: 'background-color 0.3s',
-      ...(toggleMode && { backgroundColor: 'var(--color-section)' }),
+      backgroundColor: disabled ? 'var(--color-disabled)' : 'var(--color-primary-buttons)',
+      color: disabled ? 'var(--color-disabled-text)' : 'var(--color-white)',
+    },
+    size: {
+      small: {
+        fontSize: 'var(--font-body)',
+        padding: '4px 8px',
+      },
+      medium: {
+        fontSize: 'var(--font-secondery-text)',
+        padding: '8px 16px',
+      },
+      large: {
+        fontSize: 'var(--font-large-header)',
+        padding: '12px 24px',
+      },
+    },
+    variant: {
+      default: {},
+      flat: {
+        backgroundColor: 'transparent',
+        color: 'var(--color-primary-buttons)',
+      },
+      stroked: {
+        border: `1px solid var(--color-primary-buttons)`,
+        backgroundColor: 'transparent',
+        color: 'var(--color-primary-buttons)',
+      },
+      basic: {
+        backgroundColor: 'var(--color-buttons-input)',
+        color: 'var(--color-text)',
+      },
     },
   };
 
   return (
     <button
       ref={ref}
-      style={styles.button}
-      className={className}
-      onClick={onClick}
+      style={{
+        ...styles.base,
+        ...styles.size[size],
+        ...styles.variant[variant],
+      }}
       disabled={disabled}
+      onClick={onClick}
+      className={className}
     >
-      {icon && <span>{icon}</span>}
-      <span>MultiFunction Button</span>
+      {children}
     </button>
   );
 });
