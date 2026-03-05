@@ -1,91 +1,72 @@
 // MultiFunctionButton.tsx
-import React, { forwardRef, ButtonHTMLAttributes } from 'react';
-import { CSSProperties } from 'react';
+import React from 'react';
 
-interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface MultiFunctionButtonProps {
   /**
    * The size of the button
+   * 'small' | 'medium' | 'large'
    */
   size?: 'small' | 'medium' | 'large';
   /**
    * The variant of the button
+   * 'default' | 'flat' | 'stroked' | 'basic'
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
-   * If true, the button will be disabled
+   * The state of the button
+   * 'normal' | 'pressed' | 'disabled'
    */
-  disabled?: boolean;
+  state?: 'normal' | 'pressed' | 'disabled';
   /**
-   * Additional class name for custom styling
+   * Optional click handler
+   */
+  onClick?: () => void;
+  /**
+   * Additional class names for custom styling
    */
   className?: string;
 }
 
-const styles: Record<string, CSSProperties> = {
-  base: {
-    fontFamily: 'var(--font-secondery-text)',
-    fontSize: '20px',
-    fontWeight: 600,
-    padding: '10px 20px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  default: {
-    backgroundColor: 'var(--color-primary-buttons)',
-    color: 'var(--color-white)',
-  },
-  flat: {
-    backgroundColor: 'transparent',
-    color: 'var(--color-primary-buttons)',
-  },
-  stroked: {
-    backgroundColor: 'transparent',
-    border: '2px solid var(--color-primary-buttons)',
-    color: 'var(--color-primary-buttons)',
-  },
-  basic: {
-    backgroundColor: 'var(--color-buttons-input)',
-    color: 'var(--color-text)',
-  },
-  disabled: {
-    backgroundColor: 'var(--color-disabled)',
-    color: 'var(--color-disabled-text)',
-    cursor: 'not-allowed',
-  },
-  small: {
-    padding: '5px 10px',
-  },
-  medium: {
-    padding: '10px 20px',
-  },
-  large: {
-    padding: '15px 30px',
-  },
-};
+const MultiFunctionButton = React.forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(({
+  size = 'medium',
+  variant = 'default',
+  state = 'normal',
+  onClick,
+  className,
+  ...props
+}, ref) => {
+  const styles = {
+    base: {
+      fontFamily: 'var(--font-secondery-text)',
+      borderRadius: '4px',
+      padding: size === 'small' ? '8px 16px' : size === 'large' ? '16px 32px' : '12px 24px',
+      cursor: state === 'disabled' ? 'not-allowed' : 'pointer',
+      opacity: state === 'disabled' ? 0.5 : 1,
+      border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
+      backgroundColor: variant === 'flat' ? 'transparent' : 'var(--color-primary-buttons)',
+      color: variant === 'flat' ? 'var(--color-text)' : 'var(--color-white)',
+      transition: 'background-color 0.3s, color 0.3s',
+    },
+    pressed: {
+      backgroundColor: 'var(--color-hover)',
+    },
+  };
 
-const MultiFunctionButton = forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(
-  ({ size = 'medium', variant = 'default', disabled = false, className, ...props }, ref) => {
-    const variantStyle = styles[variant];
-    const sizeStyle = styles[size];
-    const disabledStyle = disabled ? styles.disabled : {};
+  return (
+    <button
+      ref={ref}
+      onClick={state !== 'disabled' ? onClick : undefined}
+      className={className}
+      style={{
+        ...styles.base,
+        ...(state === 'pressed' && styles.pressed),
+      }}
+      {...props}
+    >
+      MultiFunction Button
+    </button>
+  );
+});
 
-    return (
-      <button
-        ref={ref}
-        style={{
-          ...styles.base,
-          ...variantStyle,
-          ...sizeStyle,
-          ...disabledStyle,
-        }}
-        className={className}
-        disabled={disabled}
-        {...props}
-      />
-    );
-  }
-);
-
-export { MultiFunctionButton };
 export default MultiFunctionButton;
+export { MultiFunctionButton };

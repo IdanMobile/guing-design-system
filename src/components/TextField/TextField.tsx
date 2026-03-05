@@ -3,55 +3,61 @@ import React, { InputHTMLAttributes, forwardRef } from 'react';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
-   * The size of the text field
+   * The variant of the text field, affecting its background color.
+   * - 'default': Uses the default background color.
+   * - 'light': Uses a lighter background color.
+   * - 'dark': Uses a darker background color.
+   */
+  variant?: 'default' | 'light' | 'dark';
+  /**
+   * The size of the text field.
+   * - 'small': A smaller text field.
+   * - 'medium': A medium-sized text field.
+   * - 'large': A larger text field.
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * The variant of the text field
-   */
-  variant?: 'default' | 'outlined' | 'filled';
-  /**
-   * Whether the text field is disabled
-   */
-  disabled?: boolean;
-  /**
-   * Additional class name for custom styling
+   * Additional className for custom styling.
    */
   className?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
-  size = 'medium',
   variant = 'default',
-  disabled = false,
-  className = '',
+  size = 'medium',
+  className,
+  style,
   ...props
 }, ref) => {
+  const backgroundColors = {
+    default: 'var(--color-dialog-sections-master-table)',
+    light: 'var(--color-white)',
+    dark: 'var(--color-section)',
+  };
+
+  const sizes = {
+    small: { fontSize: '12px', padding: '8px' },
+    medium: { fontSize: '14px', padding: '10px' },
+    large: { fontSize: '16px', padding: '12px' },
+  };
+
   const styles = {
-    base: {
-      padding: '8px 12px',
+    input: {
+      backgroundColor: backgroundColors[variant],
+      border: '1px solid var(--color-divider-stroke)',
       borderRadius: '4px',
-      border: '1px solid',
       outline: 'none',
-      fontFamily: 'var(--font-inter-regular)',
-      fontSize: '14px',
-      lineHeight: '20px',
-      backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white)',
-      borderColor: variant === 'outlined' ? 'var(--color-divider-stroke)' : 'transparent',
-      color: 'var(--color-text)',
-      width: size === 'small' ? '150px' : size === 'large' ? '300px' : '200px',
-      cursor: disabled ? 'not-allowed' : 'text',
-      opacity: disabled ? 0.5 : 1,
+      width: '100%',
+      ...sizes[size],
+      ...style,
     },
   };
 
   return (
     <input
       ref={ref}
-      type="text"
-      disabled={disabled}
       className={className}
-      style={styles.base}
+      style={styles.input}
       {...props}
     />
   );

@@ -20,10 +20,7 @@ export default {
       },
     },
     initialState: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
+      control: 'boolean',
     },
   },
 } as Meta;
@@ -34,19 +31,33 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
   variant: 'default',
-  initialState: 'light',
+  initialState: false,
 };
 
 export const Flat = Template.bind({});
 Flat.args = {
   size: 'medium',
   variant: 'flat',
-  initialState: 'light',
+  initialState: false,
 };
 
 export const Stroked = Template.bind({});
 Stroked.args = {
   size: 'medium',
   variant: 'stroked',
-  initialState: 'light',
+  initialState: false,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  variant: 'default',
+  initialState: false,
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+  variant: 'default',
+  initialState: false,
 };

@@ -1,31 +1,26 @@
 {
-  "version": "0.0.8",
-  "generatedAt": "2026-03-05T15:21:30.545Z",
+  "version": "0.0.9",
+  "generatedAt": "2026-03-05T20:30:53.969Z",
   "components": [
     {
       "name": "TextField",
       "path": "src/components/TextField/TextField.tsx",
       "description": "TextField component",
       "props": {
+        "variant": {
+          "type": "'default' | 'light' | 'dark'",
+          "required": false,
+          "description": "The variant of the text field, affecting its background color.\n- 'default': Uses the default background color.\n- 'light': Uses a lighter background color.\n- 'dark': Uses a darker background color."
+        },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the text field"
-        },
-        "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
-          "required": false,
-          "description": "The variant of the text field"
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "The size of the text field.\n- 'small': A smaller text field.\n- 'medium': A medium-sized text field.\n- 'large': A larger text field."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional className for custom styling."
         }
       }
     },
@@ -37,12 +32,17 @@
         "variant": {
           "type": "'default' | 'flat' | 'stroked' | 'basic' | 'icon'",
           "required": false,
-          "description": "The variant of the button."
+          "description": "The variant of the button.\n- 'default': Standard button style\n- 'flat': Button with no elevation\n- 'stroked': Button with a border\n- 'basic': Minimal button style\n- 'icon': Button with an icon"
         },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the button."
+          "description": "The size of the button.\n- 'small': Small button\n- 'medium': Medium button\n- 'large': Large button"
+        },
+        "pressed": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be in a pressed state."
         },
         "disabled": {
           "type": "boolean",
@@ -52,7 +52,7 @@
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling."
+          "description": "Additional class names to apply to the button."
         }
       }
     },
@@ -64,22 +64,22 @@
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the toggle button"
+          "description": "The size of the toggle button\n'small' | 'medium' | 'large'"
         },
         "variant": {
           "type": "'default' | 'flat' | 'stroked'",
           "required": false,
-          "description": "The variant of the toggle button"
+          "description": "The variant of the toggle button\n'default' | 'flat' | 'stroked'"
         },
         "initialState": {
-          "type": "'light' | 'dark'",
+          "type": "boolean",
           "required": false,
-          "description": "The initial state of the toggle button"
+          "description": "The initial state of the toggle button\ntrue for dark mode, false for light mode"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class names for styling"
+          "description": "Additional className for custom styling"
         }
       }
     },
@@ -91,22 +91,27 @@
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the button"
+          "description": "The size of the button\n'small' | 'medium' | 'large'"
         },
         "variant": {
           "type": "'default' | 'flat' | 'stroked' | 'basic'",
           "required": false,
-          "description": "The variant of the button"
+          "description": "The variant of the button\n'default' | 'flat' | 'stroked' | 'basic'"
         },
-        "disabled": {
-          "type": "boolean",
+        "state": {
+          "type": "'normal' | 'pressed' | 'disabled'",
           "required": false,
-          "description": "If true, the button will be disabled"
+          "description": "The state of the button\n'normal' | 'pressed' | 'disabled'"
+        },
+        "onClick": {
+          "type": "() => void",
+          "required": false,
+          "description": "Optional click handler"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional class names for custom styling"
         }
       }
     }
