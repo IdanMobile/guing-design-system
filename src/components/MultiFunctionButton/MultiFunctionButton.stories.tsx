@@ -19,6 +19,9 @@ export default {
         options: ['default', 'flat', 'stroked', 'basic'],
       },
     },
+    pressed: {
+      control: 'boolean',
+    },
     disabled: {
       control: 'boolean',
     },
@@ -34,38 +37,26 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
   variant: 'default',
+  pressed: false,
   disabled: false,
-  children: 'Button',
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  size: 'medium',
-  variant: 'flat',
-  disabled: false,
-  children: 'Button',
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  size: 'medium',
-  variant: 'stroked',
-  disabled: false,
-  children: 'Button',
-};
-
-export const Basic = Template.bind({});
-Basic.args = {
-  size: 'medium',
-  variant: 'basic',
-  disabled: false,
-  children: 'Button',
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  size: 'medium',
-  variant: 'default',
   disabled: true,
-  children: 'Button',
+};
+
+export const Pressed = Template.bind({});
+Pressed.args = {
+  pressed: true,
 };
