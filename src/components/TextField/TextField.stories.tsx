@@ -1,6 +1,6 @@
 // TextField.stories.tsx
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 import TextField, { TextFieldProps } from './TextField';
 
 export default {
@@ -16,7 +16,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'outlined', 'filled'],
+        options: ['default', 'flat', 'stroked'],
       },
     },
     disabled: {
@@ -35,20 +35,23 @@ Default.args = {
   size: 'medium',
   variant: 'default',
   disabled: false,
+  placeholder: 'Enter text',
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
+export const Flat = Template.bind({});
+Flat.args = {
   size: 'medium',
-  variant: 'outlined',
+  variant: 'flat',
   disabled: false,
+  placeholder: 'Enter text',
 };
 
-export const Filled = Template.bind({});
-Filled.args = {
+export const Stroked = Template.bind({});
+Stroked.args = {
   size: 'medium',
-  variant: 'filled',
+  variant: 'stroked',
   disabled: false,
+  placeholder: 'Enter text',
 };
 
 export const Disabled = Template.bind({});
@@ -56,4 +59,5 @@ Disabled.args = {
   size: 'medium',
   variant: 'default',
   disabled: true,
+  placeholder: 'Disabled',
 };

@@ -1,5 +1,5 @@
 // TextField.tsx
-import React, { InputHTMLAttributes, forwardRef } from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -9,9 +9,9 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * The variant of the text field
    */
-  variant?: 'default' | 'outlined' | 'filled';
+  variant?: 'default' | 'flat' | 'stroked';
   /**
-   * Whether the text field is disabled
+   * If true, the text field will be disabled
    */
   disabled?: boolean;
   /**
@@ -24,7 +24,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'medium',
   variant = 'default',
   disabled = false,
-  className = '',
+  className,
   ...props
 }, ref) => {
   const styles = {
@@ -32,26 +32,58 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
       padding: '8px 12px',
       borderRadius: '4px',
       border: '1px solid',
-      outline: 'none',
-      fontFamily: 'var(--font-inter-regular)',
+      fontFamily: 'var(--font-inter-regular-*)',
       fontSize: '14px',
       lineHeight: '20px',
-      backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white)',
-      borderColor: variant === 'outlined' ? 'var(--color-divider-stroke)' : 'transparent',
-      color: 'var(--color-text)',
-      width: size === 'small' ? '150px' : size === 'large' ? '300px' : '200px',
-      cursor: disabled ? 'not-allowed' : 'text',
-      opacity: disabled ? 0.5 : 1,
+      outline: 'none',
+      transition: 'border-color 0.2s',
     },
+    size: {
+      small: {
+        fontSize: '12px',
+        padding: '6px 10px',
+      },
+      medium: {},
+      large: {
+        fontSize: '16px',
+        padding: '10px 14px',
+      },
+    },
+    variant: {
+      default: {
+        backgroundColor: 'var(--color-buttons-input)',
+        borderColor: 'var(--color-divider)',
+      },
+      flat: {
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
+      },
+      stroked: {
+        backgroundColor: 'var(--color-white)',
+        borderColor: 'var(--color-divider-stroke)',
+      },
+    },
+    disabled: {
+      backgroundColor: 'var(--color-disabled)',
+      borderColor: 'var(--color-disabled-text)',
+      color: 'var(--color-disabled-text)',
+      cursor: 'not-allowed',
+    },
+  };
+
+  const combinedStyles = {
+    ...styles.base,
+    ...styles.size[size],
+    ...styles.variant[variant],
+    ...(disabled ? styles.disabled : {}),
   };
 
   return (
     <input
       ref={ref}
-      type="text"
-      disabled={disabled}
+      style={combinedStyles}
       className={className}
-      style={styles.base}
+      disabled={disabled}
       {...props}
     />
   );

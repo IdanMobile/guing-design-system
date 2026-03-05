@@ -1,7 +1,7 @@
 // Button.tsx
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
    */
@@ -15,7 +15,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    */
   disabled?: boolean;
   /**
-   * Additional class name for custom styling.
+   * Additional class names to apply to the button.
    */
   className?: string;
 }
@@ -34,30 +34,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       borderRadius: '4px',
       fontFamily: 'var(--font-inter-medium-*)',
       fontSize: '14px',
-      cursor: 'pointer',
+      fontWeight: 500,
+      cursor: disabled ? 'not-allowed' : 'pointer',
+      opacity: disabled ? 0.5 : 1,
       transition: 'background-color 0.3s',
     },
     variants: {
       default: {
         backgroundColor: 'var(--color-primary-buttons)',
         color: 'var(--color-white)',
+        border: 'none',
       },
       flat: {
         backgroundColor: 'transparent',
         color: 'var(--color-primary-buttons)',
+        border: 'none',
       },
       stroked: {
         backgroundColor: 'transparent',
-        border: '1px solid var(--color-primary-buttons)',
         color: 'var(--color-primary-buttons)',
+        border: '1px solid var(--color-primary-buttons)',
       },
       basic: {
         backgroundColor: 'var(--color-buttons-input)',
-        color: 'var(--color-buttons-text-field)',
+        color: 'var(--color-text-field)',
+        border: 'none',
       },
       icon: {
         backgroundColor: 'transparent',
         color: 'var(--color-icons-1)',
+        border: 'none',
+        padding: '10px',
       },
     },
     sizes: {
@@ -74,26 +81,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         fontSize: '16px',
       },
     },
-    disabled: {
-      backgroundColor: 'var(--color-disabled)',
-      color: 'var(--color-disabled-text)',
-      cursor: 'not-allowed',
-    },
-  };
-
-  const combinedStyles = {
-    ...styles.base,
-    ...styles.variants[variant],
-    ...styles.sizes[size],
-    ...(disabled ? styles.disabled : {}),
   };
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
-      className={className}
+      style={{
+        ...styles.base,
+        ...styles.variants[variant],
+        ...styles.sizes[size],
+      }}
       disabled={disabled}
+      className={className}
       {...props}
     >
       {children}

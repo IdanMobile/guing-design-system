@@ -1,6 +1,6 @@
 {
-  "version": "0.0.8",
-  "generatedAt": "2026-03-05T15:21:30.545Z",
+  "version": "0.0.9",
+  "generatedAt": "2026-03-05T20:08:42.700Z",
   "components": [
     {
       "name": "TextField",
@@ -13,14 +13,14 @@
           "description": "The size of the text field"
         },
         "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
+          "type": "'default' | 'flat' | 'stroked'",
           "required": false,
           "description": "The variant of the text field"
         },
         "disabled": {
           "type": "boolean",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "If true, the text field will be disabled"
         },
         "className": {
           "type": "string",
@@ -52,34 +52,7 @@
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling."
-        }
-      }
-    },
-    {
-      "name": "LightDarkModeToggle",
-      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
-      "description": "LightDarkModeToggle component",
-      "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the toggle button"
-        },
-        "variant": {
-          "type": "'default' | 'flat' | 'stroked'",
-          "required": false,
-          "description": "The variant of the toggle button"
-        },
-        "initialState": {
-          "type": "'light' | 'dark'",
-          "required": false,
-          "description": "The initial state of the toggle button"
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class names for styling"
+          "description": "Additional class names to apply to the button."
         }
       }
     },
@@ -91,22 +64,31 @@
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
+          "default": "'medium'",
           "description": "The size of the button"
         },
         "variant": {
           "type": "'default' | 'flat' | 'stroked' | 'basic'",
           "required": false,
+          "default": "'default'",
           "description": "The variant of the button"
+        },
+        "pressed": {
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "If true, the button will be in a pressed state"
         },
         "disabled": {
           "type": "boolean",
           "required": false,
+          "default": "false",
           "description": "If true, the button will be disabled"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional className for styling"
         }
       }
     }
