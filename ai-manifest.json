@@ -1,9 +1,118 @@
 {
-  "version": "0.0.0",
-  "generatedAt": "2026-03-05T00:50:43.656Z",
-  "components": [],
+  "version": "0.0.1",
+  "generatedAt": "2026-03-05T00:52:53.593Z",
+  "components": [
+    {
+      "name": "Text Field",
+      "path": "src/components/Text Field/Text Field.tsx",
+      "description": "Text Field component",
+      "props": {
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the text field"
+        },
+        "variant": {
+          "type": "'outlined' | 'filled' | 'standard'",
+          "required": false,
+          "description": "The variant of the text field"
+        },
+        "state": {
+          "type": "'default' | 'error' | 'disabled'",
+          "required": false,
+          "description": "The state of the text field"
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the text field"
+        }
+      }
+    },
+    {
+      "name": "Button",
+      "path": "src/components/Button/Button.tsx",
+      "description": "Button component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be in a disabled state."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    },
+    {
+      "name": "Light/Dark Mode Toggle",
+      "path": "src/components/Light/Dark Mode Toggle/Light/Dark Mode Toggle.tsx",
+      "description": "Light/Dark Mode Toggle component",
+      "props": {
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button"
+        },
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked'",
+          "required": false,
+          "description": "The variant of the button"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled"
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button"
+        }
+      }
+    },
+    {
+      "name": "Multi-Function Button",
+      "path": "src/components/Multi-Function Button/Multi-Function Button.tsx",
+      "description": "Multi-Function Button component",
+      "props": {
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "required": false,
+          "description": "The variant of the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    }
+  ],
   "tokens": {
-    "colors": 0,
-    "typography": 0
+    "colors": 28,
+    "typography": 24
   }
 }

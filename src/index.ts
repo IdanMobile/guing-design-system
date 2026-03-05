@@ -4,4 +4,7 @@
 export * from './design-tokens';
 
 // Components
-export * from './components/Welcome/Welcome';
+export * from './components/Text Field/Text Field';
+export * from './components/Button/Button';
+export * from './components/Light/Dark Mode Toggle/Light/Dark Mode Toggle';
+export * from './components/Multi-Function Button/Multi-Function Button';
