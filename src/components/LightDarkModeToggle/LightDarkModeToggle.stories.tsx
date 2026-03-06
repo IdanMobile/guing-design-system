@@ -19,11 +19,11 @@ export default {
         options: ['default', 'flat', 'stroked'],
       },
     },
-    initialState: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
+    disabled: {
+      control: 'boolean',
+    },
+    className: {
+      control: 'text',
     },
   },
 } as Meta;
@@ -34,19 +34,26 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'medium',
   variant: 'default',
-  initialState: 'light',
+  disabled: false,
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
+export const Disabled = Template.bind({});
+Disabled.args = {
   size: 'medium',
-  variant: 'flat',
-  initialState: 'light',
+  variant: 'default',
+  disabled: true,
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  size: 'medium',
-  variant: 'stroked',
-  initialState: 'light',
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  variant: 'default',
+  disabled: false,
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+  variant: 'default',
+  disabled: false,
 };

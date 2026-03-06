@@ -7,22 +7,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
   /**
-   * The size of the button.
+   * If true, the button will be in a pressed state.
    */
-  size?: 'small' | 'medium' | 'large';
+  pressed?: boolean;
   /**
    * If true, the button will be disabled.
    */
   disabled?: boolean;
   /**
-   * Additional class name for custom styling.
+   * Additional class names to apply to the button.
    */
   className?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
-  size = 'medium',
+  pressed = false,
   disabled = false,
   className = '',
   children,
@@ -32,8 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     base: {
       padding: '10px 20px',
       borderRadius: '4px',
-      fontFamily: 'var(--font-inter-medium-*)',
-      fontSize: '14px',
+      fontSize: 'var(--font-secondery-text)',
       cursor: 'pointer',
       transition: 'background-color 0.3s',
     },
@@ -48,50 +47,38 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       },
       stroked: {
         backgroundColor: 'transparent',
-        border: '1px solid var(--color-primary-buttons)',
         color: 'var(--color-primary-buttons)',
+        border: '1px solid var(--color-primary-buttons)',
       },
       basic: {
         backgroundColor: 'var(--color-buttons-input)',
-        color: 'var(--color-buttons-text-field)',
+        color: 'var(--color-text-field)',
       },
       icon: {
         backgroundColor: 'transparent',
-        color: 'var(--color-icons-1)',
+        color: 'var(--color-header-icons)',
+        padding: '10px',
       },
     },
-    sizes: {
-      small: {
-        padding: '5px 10px',
-        fontSize: '12px',
+    states: {
+      pressed: {
+        backgroundColor: 'var(--color-hover)',
       },
-      medium: {
-        padding: '10px 20px',
-        fontSize: '14px',
+      disabled: {
+        backgroundColor: 'var(--color-disabled)',
+        color: 'var(--color-disabled-text)',
+        cursor: 'not-allowed',
       },
-      large: {
-        padding: '15px 30px',
-        fontSize: '16px',
-      },
-    },
-    disabled: {
-      backgroundColor: 'var(--color-disabled)',
-      color: 'var(--color-disabled-text)',
-      cursor: 'not-allowed',
     },
   };
 
-  const combinedStyles = {
-    ...styles.base,
-    ...styles.variants[variant],
-    ...styles.sizes[size],
-    ...(disabled ? styles.disabled : {}),
-  };
+  const variantStyle = styles.variants[variant];
+  const stateStyle = disabled ? styles.states.disabled : pressed ? styles.states.pressed : {};
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
+      style={{ ...styles.base, ...variantStyle, ...stateStyle }}
       className={className}
       disabled={disabled}
       {...props}

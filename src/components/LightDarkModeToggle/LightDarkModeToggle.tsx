@@ -1,50 +1,48 @@
 // LightDarkModeToggle.tsx
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 
 interface LightDarkModeToggleProps {
   /**
-   * The size of the toggle button
+   * The size of the toggle button. Can be 'small', 'medium', or 'large'.
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * The variant of the toggle button
+   * The variant of the toggle button. Can be 'default', 'flat', or 'stroked'.
    */
   variant?: 'default' | 'flat' | 'stroked';
   /**
-   * The initial state of the toggle button
+   * If true, the toggle button is disabled.
    */
-  initialState?: 'light' | 'dark';
+  disabled?: boolean;
   /**
-   * Additional class names for styling
+   * Additional className for custom styling.
    */
   className?: string;
 }
 
-const LightDarkModeToggle = React.forwardRef<HTMLButtonElement, LightDarkModeToggleProps>(({
+const LightDarkModeToggle = forwardRef<HTMLButtonElement, LightDarkModeToggleProps>(({
   size = 'medium',
   variant = 'default',
-  initialState = 'light',
+  disabled = false,
   className = '',
 }, ref) => {
-  const [mode, setMode] = useState<'light' | 'dark'>(initialState);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggle = () => {
-    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    if (!disabled) {
+      setIsDarkMode(!isDarkMode);
+    }
   };
 
   const styles = {
     button: {
       padding: size === 'small' ? '4px 8px' : size === 'large' ? '12px 24px' : '8px 16px',
-      backgroundColor: mode === 'light' ? 'var(--color-white)' : 'var(--color-section)',
-      color: mode === 'light' ? 'var(--color-text)' : 'var(--color-icons-1)',
+      backgroundColor: isDarkMode ? 'var(--color-section)' : 'var(--color-white)',
+      color: isDarkMode ? 'var(--color-icons-1)' : 'var(--color-text)',
       border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
+      opacity: disabled ? 0.5 : 1,
+      cursor: disabled ? 'not-allowed' : 'pointer',
       borderRadius: '4px',
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: 'var(--font-large-header-*)',
-      fontWeight: 600,
       transition: 'background-color 0.3s, color 0.3s',
     },
   };
@@ -55,8 +53,9 @@ const LightDarkModeToggle = React.forwardRef<HTMLButtonElement, LightDarkModeTog
       style={styles.button}
       onClick={handleToggle}
       className={className}
+      disabled={disabled}
     >
-      {mode === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      {isDarkMode ? 'Dark Mode' : 'Light Mode'}
     </button>
   );
 });

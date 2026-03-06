@@ -1,26 +1,26 @@
 {
-  "version": "0.0.8",
-  "generatedAt": "2026-03-05T15:21:30.545Z",
+  "version": "0.0.9",
+  "generatedAt": "2026-03-06T23:30:03.709Z",
   "components": [
     {
       "name": "TextField",
       "path": "src/components/TextField/TextField.tsx",
       "description": "TextField component",
       "props": {
+        "variant": {
+          "type": "'default' | 'light' | 'dark'",
+          "required": false,
+          "description": "The variant of the text field\n- 'default': default background\n- 'light': light background\n- 'dark': dark background"
+        },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the text field"
-        },
-        "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
-          "required": false,
-          "description": "The variant of the text field"
+          "description": "The size of the text field\n- 'small': small size\n- 'medium': medium size\n- 'large': large size"
         },
         "disabled": {
           "type": "boolean",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "If true, the text field will be disabled"
         },
         "className": {
           "type": "string",
@@ -39,10 +39,10 @@
           "required": false,
           "description": "The variant of the button."
         },
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
+        "pressed": {
+          "type": "boolean",
           "required": false,
-          "description": "The size of the button."
+          "description": "If true, the button will be in a pressed state."
         },
         "disabled": {
           "type": "boolean",
@@ -52,7 +52,7 @@
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling."
+          "description": "Additional class names to apply to the button."
         }
       }
     },
@@ -64,22 +64,22 @@
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the toggle button"
+          "description": "The size of the toggle button. Can be 'small', 'medium', or 'large'."
         },
         "variant": {
           "type": "'default' | 'flat' | 'stroked'",
           "required": false,
-          "description": "The variant of the toggle button"
+          "description": "The variant of the toggle button. Can be 'default', 'flat', or 'stroked'."
         },
-        "initialState": {
-          "type": "'light' | 'dark'",
+        "disabled": {
+          "type": "boolean",
           "required": false,
-          "description": "The initial state of the toggle button"
+          "description": "If true, the toggle button is disabled."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class names for styling"
+          "description": "Additional className for custom styling."
         }
       }
     },
@@ -113,6 +113,17 @@
   ],
   "tokens": {
     "colors": 28,
-    "typography": 24
+    "typography": 24,
+    "radius": 18,
+    "shadows": 4,
+    "elevations": 2,
+    "borders": 23,
+    "gaps": 0,
+    "sizes": 0,
+    "opacity": 9,
+    "gradients": 1,
+    "blurs": 0,
+    "layoutGrids": 1,
+    "icons": 0
   }
 }

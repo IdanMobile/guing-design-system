@@ -2926,6 +2926,10 @@ export const designTokens = {
   },
   layoutGrids: {
   },
+  elevations: {
+    elevation8: [{"type":"drop","color":"#000000","opacity":0.2,"offsetX":0,"offsetY":5,"blur":5,"spread":-3},{"type":"drop","color":"#000000","opacity":0.14,"offsetX":0,"offsetY":8,"blur":10,"spread":1},{"type":"drop","color":"#000000","opacity":0.12,"offsetX":0,"offsetY":3,"blur":14,"spread":2}],
+    elevation2: [{"type":"drop","color":"#000000","opacity":0.2,"offsetX":0,"offsetY":3,"blur":1,"spread":-2},{"type":"drop","color":"#000000","opacity":0.14,"offsetX":0,"offsetY":2,"blur":2,"spread":0},{"type":"drop","color":"#000000","opacity":0.12,"offsetX":0,"offsetY":1,"blur":5,"spread":0}],
+  },
 } as const;
 
 export type DesignTokens = typeof designTokens;
