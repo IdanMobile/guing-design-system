@@ -8,9 +8,12 @@ export const Colors = () => {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1 style={{ marginBottom: '2rem' }}>Colors</h1>
-      {colors.length === 0 ? (
+      
+      {colors.length === 0 && (
         <p style={{ color: '#666' }}>No colors found. Sync tokens from Figma to see them here.</p>
-      ) : (
+      )}
+
+      {colors.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '2rem' }}>
           {colors.map((color: ColorToken) => (
             <div key={color.name} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
