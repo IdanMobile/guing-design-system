@@ -1,7 +1,7 @@
 // Button.stories.tsx
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Button, { ButtonProps } from './Button';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button from './Button';
 
 export default {
   title: 'Components/Button',
@@ -10,7 +10,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic', 'icon'],
+        options: ['default', 'flat', 'stroked', 'basic', 'toggle', 'multi-function', 'pressed', 'disabled', 'icon'],
       },
     },
     size: {
@@ -19,16 +19,11 @@ export default {
         options: ['small', 'medium', 'large'],
       },
     },
-    disabled: {
-      control: 'boolean',
-    },
-    children: {
-      control: 'text',
-    },
+    className: { control: 'text' },
   },
-} as Meta;
+} as ComponentMeta<typeof Button>;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -58,17 +53,37 @@ Basic.args = {
   children: 'Button',
 };
 
+export const Toggle = Template.bind({});
+Toggle.args = {
+  variant: 'toggle',
+  size: 'medium',
+  children: 'Button',
+};
+
+export const MultiFunction = Template.bind({});
+MultiFunction.args = {
+  variant: 'multi-function',
+  size: 'medium',
+  children: 'Button',
+};
+
+export const Pressed = Template.bind({});
+Pressed.args = {
+  variant: 'pressed',
+  size: 'medium',
+  children: 'Button',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  variant: 'disabled',
+  size: 'medium',
+  children: 'Button',
+};
+
 export const Icon = Template.bind({});
 Icon.args = {
   variant: 'icon',
   size: 'medium',
   children: '🔍',
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  variant: 'default',
-  size: 'medium',
-  disabled: true,
-  children: 'Button',
 };

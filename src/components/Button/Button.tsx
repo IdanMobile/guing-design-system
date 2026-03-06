@@ -5,17 +5,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon';
   /**
    * The size of the button.
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * If true, the button will be disabled.
-   */
-  disabled?: boolean;
-  /**
-   * Additional class name for custom styling.
+   * Additional className for custom styling.
    */
   className?: string;
 }
@@ -23,17 +19,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
   size = 'medium',
-  disabled = false,
-  className = '',
-  children,
+  className,
   ...props
 }, ref) => {
   const styles = {
     base: {
+      fontFamily: 'var(--font-large-header)',
       padding: '10px 20px',
       borderRadius: '4px',
-      fontFamily: 'var(--font-inter-medium-*)',
-      fontSize: '14px',
       cursor: 'pointer',
       transition: 'background-color 0.3s',
     },
@@ -55,29 +48,42 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         backgroundColor: 'var(--color-buttons-input)',
         color: 'var(--color-buttons-text-field)',
       },
+      toggle: {
+        backgroundColor: 'var(--color-section)',
+        color: 'var(--color-white)',
+      },
+      'multi-function': {
+        backgroundColor: 'var(--color-green-success)',
+        color: 'var(--color-white)',
+      },
+      pressed: {
+        backgroundColor: 'var(--color-hover)',
+        color: 'var(--color-white)',
+      },
+      disabled: {
+        backgroundColor: 'var(--color-disabled)',
+        color: 'var(--color-disabled-text)',
+        cursor: 'not-allowed',
+      },
       icon: {
         backgroundColor: 'transparent',
         color: 'var(--color-icons-1)',
+        padding: '10px',
       },
     },
     sizes: {
       small: {
-        padding: '5px 10px',
         fontSize: '12px',
+        padding: '8px 16px',
       },
       medium: {
-        padding: '10px 20px',
         fontSize: '14px',
+        padding: '10px 20px',
       },
       large: {
-        padding: '15px 30px',
         fontSize: '16px',
+        padding: '12px 24px',
       },
-    },
-    disabled: {
-      backgroundColor: 'var(--color-disabled)',
-      color: 'var(--color-disabled-text)',
-      cursor: 'not-allowed',
     },
   };
 
@@ -85,21 +91,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     ...styles.base,
     ...styles.variants[variant],
     ...styles.sizes[size],
-    ...(disabled ? styles.disabled : {}),
   };
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
       className={className}
-      disabled={disabled}
+      style={combinedStyles}
+      disabled={variant === 'disabled'}
       {...props}
-    >
-      {children}
-    </button>
+    />
   );
 });
 
-export { Button };
 export default Button;
+export { Button };
