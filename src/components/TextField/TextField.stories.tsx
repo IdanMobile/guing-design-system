@@ -1,4 +1,3 @@
-// TextField.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import { TextField } from './TextField';
 
@@ -17,20 +16,19 @@ export const Default: Story = {
   args: {
     variant: 'default',
     size: 'md',
-  },
-};
-
-export const Filled: Story = {
-  args: {
-    variant: 'filled',
-    size: 'md',
+    state: 'enabled',
   },
 };
 
 export const Outlined: Story = {
   args: {
     variant: 'outlined',
-    size: 'md',
+  },
+};
+
+export const Filled: Story = {
+  args: {
+    variant: 'filled',
   },
 };
 
@@ -48,6 +46,12 @@ export const Large: Story = {
 
 export const Disabled: Story = {
   args: {
-    disabled: true,
+    state: 'disabled',
+  },
+};
+
+export const Error: Story = {
+  args: {
+    state: 'error',
   },
 };

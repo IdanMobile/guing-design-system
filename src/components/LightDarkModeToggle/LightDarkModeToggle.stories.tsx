@@ -1,52 +1,41 @@
 // LightDarkModeToggle.stories.tsx
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import LightDarkModeToggle from './LightDarkModeToggle';
+import type { Meta, StoryObj } from '@storybook/react';
+import { LightDarkModeToggle } from './LightDarkModeToggle';
 
-export default {
+const meta = {
   title: 'Components/LightDarkModeToggle',
   component: LightDarkModeToggle,
-  argTypes: {
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
-    },
-    variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'flat', 'stroked'],
-      },
-    },
-    initialState: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
-    },
+  args: {
+    initialState: false,
   },
-} as Meta;
+} satisfies Meta<typeof LightDarkModeToggle>;
 
-const Template: Story = (args) => <LightDarkModeToggle {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  size: 'medium',
-  variant: 'default',
-  initialState: 'light',
+export const Default: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+  },
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  size: 'medium',
-  variant: 'flat',
-  initialState: 'light',
+export const SmallFlat: Story = {
+  args: {
+    size: 'sm',
+    variant: 'flat',
+  },
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  size: 'medium',
-  variant: 'stroked',
-  initialState: 'light',
+export const LargeDefault: Story = {
+  args: {
+    size: 'lg',
+    variant: 'default',
+  },
+};
+
+export const DarkModeInitial: Story = {
+  args: {
+    initialState: true,
+  },
 };
