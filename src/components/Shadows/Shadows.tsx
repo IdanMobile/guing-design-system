@@ -3,6 +3,12 @@ import tokens from '../../design-tokens/tokens.json';
 
 export const Shadows = () => {
   const shadows = (tokens as any).shadows || [];
+  const colors = (tokens as any).colors || [];
+
+  const getColorName = (hex: string) => {
+    const match = colors.find((c: any) => c.value.toLowerCase() === hex.toLowerCase());
+    return match ? match.name : hex;
+  };
 
   const getShadowStyle = (s: any) => {
     return s.shadows.map((sh: any) => `${sh.type === 'inner' ? 'inset ' : ''}${sh.offsetX}px ${sh.offsetY}px ${sh.blur}px ${sh.spread}px rgba(0,0,0,${sh.opacity})`).join(', ');
@@ -31,22 +37,25 @@ export const Shadows = () => {
                   <div style={{ fontSize: '0.7rem', color: '#999', textTransform: 'uppercase' }}>{s.category}</div>
                 )}
                 <div style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{s.shadows.length} layer{s.shadows.length !== 1 ? 's' : ''}</div>
-                {s.shadows.map((sh: any, i: number) => (
-                  <div key={i} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 0.75rem', alignItems: 'center' }}>
-                    <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>{sh.type}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <div style={{ width: '10px', height: '10px', backgroundColor: sh.color, borderRadius: '2px', border: '1px solid #ddd', opacity: sh.opacity }} />
-                      <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>{sh.color} @{Math.round(sh.opacity * 100)}%</span>
+                {s.shadows.map((sh: any, i: number) => {
+                  const colorName = getColorName(sh.color);
+                  return (
+                    <div key={i} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 0.75rem', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>{sh.type}</span>
+                      <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                        <div style={{ width: '10px', height: '10px', backgroundColor: sh.color, borderRadius: '2px', border: '1px solid #ddd', opacity: sh.opacity }} />
+                        <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>{colorName} @{Math.round(sh.opacity * 100)}%</span>
+                      </div>
+                      <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
+                      <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>offset: {sh.offsetX},{sh.offsetY}</span>
+                      <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
+                      <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>blur: {sh.blur}px</span>
+                      <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
+                      <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>spread: {sh.spread}px</span>
                     </div>
-                    <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>offset: {sh.offsetX},{sh.offsetY}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>blur: {sh.blur}px</span>
-                    <span style={{ fontSize: '0.75rem', color: '#ccc' }}>{"·"}</span>
-                    <span style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace' }}>spread: {sh.spread}px</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

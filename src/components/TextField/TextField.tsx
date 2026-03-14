@@ -1,27 +1,24 @@
+// TextField.tsx
 import React, { forwardRef } from 'react';
-import type { InputHTMLAttributes } from 'react';
 
-/**
- * TextField component props
- */
-export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * Size of the text field
-   * @default 'md'
+   * The size of the text field.
+   * 'sm' for small, 'md' for medium, 'lg' for large.
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Variant of the text field
-   * @default 'default'
+   * The variant of the text field.
+   * 'default', 'flat', 'stroked', 'basic'.
    */
-  variant?: 'default' | 'outlined' | 'filled';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
-   * State of the text field
-   * @default 'enabled'
+   * The state of the text field.
+   * 'default', 'pressed', 'disabled'.
    */
-  state?: 'enabled' | 'disabled' | 'error';
+  state?: 'default' | 'pressed' | 'disabled';
   /**
-   * Additional class name for styling
+   * Additional class name for custom styling.
    */
   className?: string;
 }
@@ -29,36 +26,51 @@ export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElemen
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'md',
   variant = 'default',
-  state = 'enabled',
+  state = 'default',
   className,
   ...props
 }, ref) => {
+  const sizeStyles: Record<TextFieldProps['size'], React.CSSProperties> = {
+    sm: { fontSize: '12px', padding: '8px' },
+    md: { fontSize: '14px', padding: '10px' },
+    lg: { fontSize: '16px', padding: '12px' },
+  };
+
+  const variantStyles: Record<TextFieldProps['variant'], React.CSSProperties> = {
+    default: { backgroundColor: 'var(--color-buttons-input)', color: 'var(--color-body-text)' },
+    flat: { backgroundColor: 'transparent', color: 'var(--color-text)' },
+    stroked: { border: '1px solid var(--color-divider-stroke)', color: 'var(--color-body-text)' },
+    basic: { backgroundColor: 'var(--color-white-white)', color: 'var(--color-body-text)' },
+  };
+
+  const stateStyles: Record<TextFieldProps['state'], React.CSSProperties> = {
+    default: {},
+    pressed: { borderColor: 'var(--color-primary-3)' },
+    disabled: { backgroundColor: 'var(--color-disabled)', color: 'var(--color-disabled-text)', cursor: 'not-allowed' },
+  };
+
   const styles: React.CSSProperties = {
-    padding: size === 'sm' ? '8px' : size === 'lg' ? '16px' : '12px',
-    border: variant === 'outlined' ? '1px solid var(--color-divider-stroke)' : 'none',
-    backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white-white)',
-    color: state === 'error' ? 'var(--color-red-error-text-field)' : 'var(--color-body-text)',
-    opacity: state === 'disabled' ? 0.5 : 1,
-    cursor: state === 'disabled' ? 'not-allowed' : 'text',
-    fontFamily: 'var(--font-inter-regular-*)',
-    fontSize: '14px',
-    lineHeight: '20px',
-    width: '100%',
+    ...sizeStyles[size],
+    ...variantStyles[variant],
+    ...stateStyles[state],
+    borderRadius: '4px',
+    border: 'none',
+    outline: 'none',
     boxSizing: 'border-box',
+    width: '100%',
   };
 
   return (
     <input
       ref={ref}
-      className={className}
       style={styles}
+      className={className}
       disabled={state === 'disabled'}
       {...props}
     />
   );
 });
 
-TextField.displayName = 'TextField';
-
 export { TextField };
 export default TextField;
+export type { TextFieldProps };
