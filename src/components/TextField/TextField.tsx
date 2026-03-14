@@ -1,56 +1,58 @@
 // TextField.tsx
-import React, { InputHTMLAttributes, forwardRef } from 'react';
+import React from 'react';
 
-export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * Size of the text field
+   * The size of the text field.
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Variant of the text field
+   * The variant of the text field.
    */
-  variant?: 'default' | 'flat' | 'stroked';
+  variant?: 'default' | 'filled' | 'outlined';
   /**
-   * State of the text field
+   * If true, the text field will be disabled.
    */
-  state?: 'default' | 'disabled' | 'error';
+  disabled?: boolean;
   /**
-   * Additional class name for styling
+   * Additional class name for custom styling.
    */
   className?: string;
 }
 
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'md',
   variant = 'default',
-  state = 'default',
+  disabled = false,
   className,
   ...props
 }, ref) => {
-  const styles = {
-    base: {
-      fontFamily: 'var(--font-inter-regular)',
-      padding: size === 'sm' ? '8px' : size === 'md' ? '12px' : '16px',
-      borderRadius: '4px',
-      border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
-      backgroundColor: state === 'disabled' ? 'var(--color-disabled)' :
-        state === 'error' ? 'var(--color-error)' :
-        variant === 'flat' ? 'var(--color-buttons-input)' : 'var(--color-dialog-sections)',
-      color: state === 'disabled' ? 'var(--color-disabled-text)' : 'var(--color-body-text)',
-      cursor: state === 'disabled' ? 'not-allowed' : 'text',
-    },
+  const styles: React.CSSProperties = {
+    padding: size === 'sm' ? '4px 8px' : size === 'lg' ? '12px 16px' : '8px 12px',
+    backgroundColor: variant === 'filled' ? 'var(--color-dialog-sections)' : 'var(--color-white-white)',
+    border: variant === 'outlined' ? '1px solid var(--color-divider-stroke)' : 'none',
+    borderRadius: '4px',
+    fontSize: '14px',
+    color: 'var(--color-body-text)',
+    outline: 'none',
+    width: '100%',
+    boxSizing: 'border-box',
+    cursor: disabled ? 'not-allowed' : 'text',
+    opacity: disabled ? 0.5 : 1,
   };
 
   return (
     <input
       ref={ref}
+      style={styles}
       className={className}
-      style={styles.base}
-      disabled={state === 'disabled'}
+      disabled={disabled}
       {...props}
     />
   );
 });
+
+TextField.displayName = 'TextField';
 
 export { TextField };
 export default TextField;
