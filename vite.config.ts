@@ -8,6 +8,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'test-client',
+      fileName: 'index',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
