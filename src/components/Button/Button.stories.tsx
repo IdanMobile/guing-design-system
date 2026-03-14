@@ -10,13 +10,7 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic', 'icon'],
-      },
-    },
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
+        options: ['default', 'flat', 'stroked', 'basic'],
       },
     },
     disabled: {
@@ -33,42 +27,30 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   variant: 'default',
-  size: 'medium',
-  children: 'Button',
+  children: 'Default Button',
 };
 
 export const Flat = Template.bind({});
 Flat.args = {
   variant: 'flat',
-  size: 'medium',
-  children: 'Button',
+  children: 'Flat Button',
 };
 
 export const Stroked = Template.bind({});
 Stroked.args = {
   variant: 'stroked',
-  size: 'medium',
-  children: 'Button',
+  children: 'Stroked Button',
 };
 
 export const Basic = Template.bind({});
 Basic.args = {
   variant: 'basic',
-  size: 'medium',
-  children: 'Button',
-};
-
-export const Icon = Template.bind({});
-Icon.args = {
-  variant: 'icon',
-  size: 'medium',
-  children: '🔍',
+  children: 'Basic Button',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   variant: 'default',
-  size: 'medium',
   disabled: true,
-  children: 'Button',
+  children: 'Disabled Button',
 };

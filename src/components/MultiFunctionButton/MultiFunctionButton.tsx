@@ -1,6 +1,5 @@
 // MultiFunctionButton.tsx
-import React, { forwardRef, ButtonHTMLAttributes } from 'react';
-import { CSSProperties } from 'react';
+import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 
 interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -21,66 +20,41 @@ interface MultiFunctionButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
   className?: string;
 }
 
-const styles: Record<string, CSSProperties> = {
-  base: {
-    fontFamily: 'var(--font-secondery-text)',
-    fontSize: '20px',
-    fontWeight: 600,
-    padding: '10px 20px',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  },
-  default: {
-    backgroundColor: 'var(--color-primary-buttons)',
-    color: 'var(--color-white)',
-  },
-  flat: {
-    backgroundColor: 'transparent',
-    color: 'var(--color-primary-buttons)',
-  },
-  stroked: {
-    backgroundColor: 'transparent',
-    border: '2px solid var(--color-primary-buttons)',
-    color: 'var(--color-primary-buttons)',
-  },
-  basic: {
-    backgroundColor: 'var(--color-buttons-input)',
-    color: 'var(--color-text)',
-  },
-  disabled: {
-    backgroundColor: 'var(--color-disabled)',
-    color: 'var(--color-disabled-text)',
-    cursor: 'not-allowed',
-  },
-  small: {
-    padding: '5px 10px',
-  },
-  medium: {
-    padding: '10px 20px',
-  },
-  large: {
-    padding: '15px 30px',
-  },
-};
-
 const MultiFunctionButton = forwardRef<HTMLButtonElement, MultiFunctionButtonProps>(
   ({ size = 'medium', variant = 'default', disabled = false, className, ...props }, ref) => {
-    const variantStyle = styles[variant];
-    const sizeStyle = styles[size];
-    const disabledStyle = disabled ? styles.disabled : {};
+    const styles = {
+      base: {
+        fontFamily: 'var(--font-text-body)',
+        color: 'var(--color-text)',
+        backgroundColor: 'var(--color-buttons-input)',
+        border: 'none',
+        padding: '10px 20px',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.5 : 1,
+      },
+      size: {
+        small: { fontSize: '12px', padding: '8px 16px' },
+        medium: { fontSize: '14px', padding: '10px 20px' },
+        large: { fontSize: '16px', padding: '12px 24px' },
+      },
+      variant: {
+        default: { backgroundColor: 'var(--color-primary-buttons)' },
+        flat: { backgroundColor: 'transparent', border: '1px solid var(--color-divider-stroke)' },
+        stroked: { backgroundColor: 'transparent', border: '2px solid var(--color-primary-buttons)' },
+        basic: { backgroundColor: 'var(--color-white-white)' },
+      },
+    };
 
     return (
       <button
         ref={ref}
         style={{
           ...styles.base,
-          ...variantStyle,
-          ...sizeStyle,
-          ...disabledStyle,
+          ...styles.size[size],
+          ...styles.variant[variant],
         }}
-        className={className}
         disabled={disabled}
+        className={className}
         {...props}
       />
     );

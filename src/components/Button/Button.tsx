@@ -4,95 +4,73 @@ import React from 'react';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
+   * - 'default': Standard button
+   * - 'flat': Button with no elevation
+   * - 'stroked': Button with a border
+   * - 'basic': Minimal button
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
-  /**
-   * The size of the button.
-   */
-  size?: 'small' | 'medium' | 'large';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
    * If true, the button will be disabled.
    */
   disabled?: boolean;
   /**
-   * Additional class name for custom styling.
+   * Additional class names to apply to the button.
    */
   className?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
-  size = 'medium',
   disabled = false,
-  className = '',
+  className,
   children,
   ...props
 }, ref) => {
   const styles = {
-    base: {
-      padding: '10px 20px',
-      borderRadius: '4px',
-      fontFamily: 'var(--font-inter-medium-*)',
-      fontSize: '14px',
-      cursor: 'pointer',
-      transition: 'background-color 0.3s',
+    default: {
+      backgroundColor: 'var(--color-primary-buttons)',
+      color: 'var(--color-white-white)',
+      border: 'none',
     },
-    variants: {
-      default: {
-        backgroundColor: 'var(--color-primary-buttons)',
-        color: 'var(--color-white)',
-      },
-      flat: {
-        backgroundColor: 'transparent',
-        color: 'var(--color-primary-buttons)',
-      },
-      stroked: {
-        backgroundColor: 'transparent',
-        border: '1px solid var(--color-primary-buttons)',
-        color: 'var(--color-primary-buttons)',
-      },
-      basic: {
-        backgroundColor: 'var(--color-buttons-input)',
-        color: 'var(--color-buttons-text-field)',
-      },
-      icon: {
-        backgroundColor: 'transparent',
-        color: 'var(--color-icons-1)',
-      },
+    flat: {
+      backgroundColor: 'transparent',
+      color: 'var(--color-primary-buttons)',
+      border: 'none',
     },
-    sizes: {
-      small: {
-        padding: '5px 10px',
-        fontSize: '12px',
-      },
-      medium: {
-        padding: '10px 20px',
-        fontSize: '14px',
-      },
-      large: {
-        padding: '15px 30px',
-        fontSize: '16px',
-      },
+    stroked: {
+      backgroundColor: 'transparent',
+      color: 'var(--color-primary-buttons)',
+      border: '1px solid var(--color-primary-buttons)',
+    },
+    basic: {
+      backgroundColor: 'var(--color-buttons-input)',
+      color: 'var(--color-body-text)',
+      border: 'none',
     },
     disabled: {
       backgroundColor: 'var(--color-disabled)',
       color: 'var(--color-disabled-text)',
+      border: 'none',
       cursor: 'not-allowed',
     },
   };
 
-  const combinedStyles = {
-    ...styles.base,
-    ...styles.variants[variant],
-    ...styles.sizes[size],
-    ...(disabled ? styles.disabled : {}),
-  };
+  const variantStyle = disabled ? styles.disabled : styles[variant];
 
   return (
     <button
       ref={ref}
-      style={combinedStyles}
       className={className}
+      style={{
+        padding: '10px 20px',
+        borderRadius: '4px',
+        fontFamily: 'var(--font-inter-medium-*)',
+        fontSize: '14px',
+        fontWeight: 500,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        ...variantStyle,
+      }}
       disabled={disabled}
       {...props}
     >

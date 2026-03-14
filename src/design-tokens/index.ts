@@ -13,14 +13,9 @@ export const tokens = {
       "category": "Filters / Filters open / Filters / mat-card"
     },
     {
-      "name": "Dialog-sections-Master-table",
+      "name": "Dialog-sections",
       "value": "#F6F6F9",
       "category": "Master table / Master table"
-    },
-    {
-      "name": "Dialog-sections-New-buttons",
-      "value": "#091C2A",
-      "category": "New buttons"
     },
     {
       "name": "Buttons-Input",
@@ -33,6 +28,11 @@ export const tokens = {
       "category": "Text field"
     },
     {
+      "name": "Buttons-Secondary-button",
+      "value": "#191836",
+      "category": "New buttons / Secondary button"
+    },
+    {
       "name": "Icons-1",
       "value": "#D7E3EC",
       "category": "General"
@@ -43,9 +43,19 @@ export const tokens = {
       "category": "Master table / Master table / table cell"
     },
     {
+      "name": "Body-text",
+      "value": "#1D1D1D",
+      "category": "Buttons"
+    },
+    {
       "name": "Text",
       "value": "#295365",
       "category": "Selected / Master table / pagination"
+    },
+    {
+      "name": "Dialog-layout",
+      "value": "#091C2A",
+      "category": "New buttons"
     },
     {
       "name": "Disabled",
@@ -68,6 +78,11 @@ export const tokens = {
       "category": "Filters / Filters open / Filters / mat-card"
     },
     {
+      "name": "Section",
+      "value": "#232D42",
+      "category": "Text field"
+    },
+    {
       "name": "Green-Success",
       "value": "#25A96B",
       "category": "General"
@@ -75,7 +90,7 @@ export const tokens = {
     {
       "name": "Header-Icons",
       "value": "#8E8EA9",
-      "category": "Typography / audiocodes-logo-svg (3) 1"
+      "category": "Buttons / audiocodes-logo-svg (3) 2"
     },
     {
       "name": "Hover",
@@ -89,7 +104,7 @@ export const tokens = {
     },
     {
       "name": "Primary-Buttons",
-      "value": "#2196F3",
+      "value": "#8A5ADB",
       "category": "Buttons"
     },
     {
@@ -98,19 +113,29 @@ export const tokens = {
       "category": "Text field"
     },
     {
+      "name": "Primary-3",
+      "value": "#2196F3",
+      "category": "Typography"
+    },
+    {
+      "name": "Primary-Primary-button",
+      "value": "#9B5DFF",
+      "category": "New buttons / Primary button"
+    },
+    {
       "name": "Purple",
       "value": "#8B4ED6",
       "category": "General"
     },
     {
-      "name": "Red-Error",
+      "name": "Red-Error-Text-field",
       "value": "#C84747",
       "category": "Text field"
     },
     {
-      "name": "Section",
-      "value": "#232D42",
-      "category": "Text field"
+      "name": "Red-Error-icons",
+      "value": "#EF355D",
+      "category": "New buttons / icons"
     },
     {
       "name": "Select",
@@ -118,19 +143,34 @@ export const tokens = {
       "category": "Selected / Master table"
     },
     {
-      "name": "Selected",
+      "name": "Selected-1",
       "value": "#223B4E",
       "category": "General"
     },
     {
-      "name": "Text-field",
+      "name": "Selected-Secondary-button",
+      "value": "#F0F0F0",
+      "category": "New buttons / Secondary button"
+    },
+    {
+      "name": "Selected-MenuList",
+      "value": "#192557",
+      "category": "New buttons / <Menu> / <Paper> / <MenuList>"
+    },
+    {
+      "name": "Text-field-Text-Field",
       "value": "#2F3649",
       "category": "Text field / Text Field"
     },
     {
-      "name": "White",
+      "name": "Text-field-Menu",
+      "value": "#2B344D",
+      "category": "New buttons / <Menu>"
+    },
+    {
+      "name": "white-white",
       "value": "#FFFFFF",
-      "category": "Text field / Text Field / State=Focused, Assistive text=True"
+      "category": "New buttons / Primary button"
     },
     {
       "name": "Text-field-Header",
@@ -181,13 +221,13 @@ export const tokens = {
       "color": "#0E92CB"
     },
     {
-      "name": "Secondery-Text",
+      "name": "Body-text",
       "fontFamily": "Inter",
       "fontSize": 20,
       "fontWeight": 500,
       "lineHeight": 1.25,
       "category": "Buttons",
-      "color": "#505D6F"
+      "color": "#1D1D1D"
     },
     {
       "name": "Text-Body",
@@ -378,6 +418,24 @@ export const tokens = {
       "category": "Table for Figma work"
     },
     {
+      "name": "Buttons-New-buttons",
+      "value": 12,
+      "topLeft": 12,
+      "topRight": 12,
+      "bottomRight": 12,
+      "bottomLeft": 12,
+      "category": "New buttons"
+    },
+    {
+      "name": "Buttons-Text-field",
+      "value": 0,
+      "topLeft": 0,
+      "topRight": 4,
+      "bottomRight": 4,
+      "bottomLeft": 0,
+      "category": "Text field"
+    },
+    {
       "name": "",
       "value": 4,
       "topLeft": 4,
@@ -385,6 +443,24 @@ export const tokens = {
       "bottomRight": 4,
       "bottomLeft": 4,
       "category": "Filters / Filters open / Filters / mat-card"
+    },
+    {
+      "name": "Menu-New-buttons",
+      "value": 8,
+      "topLeft": 8,
+      "topRight": 8,
+      "bottomRight": 8,
+      "bottomLeft": 8,
+      "category": "New buttons"
+    },
+    {
+      "name": "Menu-Filters-open",
+      "value": 0,
+      "topLeft": 0,
+      "topRight": 0,
+      "bottomRight": 4,
+      "bottomLeft": 4,
+      "category": "Filters / Filters open"
     },
     {
       "name": "Icons",
@@ -414,15 +490,6 @@ export const tokens = {
       "category": "Master table / Master table"
     },
     {
-      "name": "Menu",
-      "value": 0,
-      "topLeft": 0,
-      "topRight": 0,
-      "bottomRight": 4,
-      "bottomLeft": 4,
-      "category": "Filters / Filters open"
-    },
-    {
       "name": "Primary-Slider",
       "value": 100,
       "topLeft": 100,
@@ -430,6 +497,15 @@ export const tokens = {
       "bottomRight": 100,
       "bottomLeft": 100,
       "category": "Slider / Sldiers / <Slider> / Slider"
+    },
+    {
+      "name": "Primary-state-Default-icon-false",
+      "value": 156.69219970703125,
+      "topLeft": 156.69219970703125,
+      "topRight": 156.69219970703125,
+      "bottomRight": 156.69219970703125,
+      "bottomLeft": 156.69219970703125,
+      "category": "New buttons / Secondary button / state=Default, icon=false"
     },
     {
       "name": "Primary-_SliderThumb",
@@ -450,31 +526,13 @@ export const tokens = {
       "category": "Text field / Text Field"
     },
     {
-      "name": "Buttons",
-      "value": 0,
-      "topLeft": 0,
-      "topRight": 4,
-      "bottomRight": 4,
-      "bottomLeft": 0,
-      "category": "Text field"
-    },
-    {
-      "name": "White-New-buttons",
+      "name": "Dialog-sections-New-buttons",
       "value": 6,
       "topLeft": 6,
       "topRight": 6,
       "bottomRight": 6,
       "bottomLeft": 6,
       "category": "New buttons"
-    },
-    {
-      "name": "White-Table-settings-default-default-1st-page",
-      "value": 0,
-      "topLeft": 0,
-      "topRight": 0,
-      "bottomRight": 3.708608865737915,
-      "bottomLeft": 3.708608865737915,
-      "category": "Table Settings / Table settings - default - default- 1st page"
     },
     {
       "name": "Dialog-sections-Master-table",
@@ -519,6 +577,15 @@ export const tokens = {
       "topRight": 0,
       "bottomRight": 3.6848485469818115,
       "bottomLeft": 3.6848485469818115,
+      "category": "Table Settings / Table settings - default - default- 1st page"
+    },
+    {
+      "name": "White",
+      "value": 0,
+      "topLeft": 0,
+      "topRight": 0,
+      "bottomRight": 3.708608865737915,
+      "bottomLeft": 3.708608865737915,
       "category": "Table Settings / Table settings - default - default- 1st page"
     },
     {
@@ -591,6 +658,21 @@ export const tokens = {
         }
       ],
       "category": "Search bar / Search"
+    },
+    {
+      "name": "Design system/Button shadow",
+      "shadows": [
+        {
+          "type": "drop",
+          "color": "#160532",
+          "opacity": 0.2,
+          "offsetX": 0,
+          "offsetY": 1.5,
+          "blur": 3,
+          "spread": 0
+        }
+      ],
+      "category": "New buttons"
     }
   ],
   "elevations": [
@@ -663,29 +745,29 @@ export const tokens = {
   ],
   "borders": [
     {
-      "name": "Buttons-New-buttons",
+      "name": "Text-Field",
       "color": "#0C98B0",
       "weight": 1,
       "strokeAlign": "INSIDE",
-      "category": "New buttons",
+      "category": "Text field",
       "dashPattern": [
         10,
         5
       ]
     },
     {
-      "name": "Buttons-pagination",
-      "color": "#7A7A7A",
+      "name": "White-New-buttons",
+      "color": "#000000",
       "weight": 1,
       "strokeAlign": "INSIDE",
-      "category": "Table for Figma work / Master table / pagination"
+      "category": "New buttons"
     },
     {
-      "name": "Buttons-Buttons",
-      "color": "#0C98B0",
-      "weight": 1,
+      "name": "White-Table-settings-default-default-1st-page",
+      "color": "#295365",
+      "weight": 0.7155872583389282,
       "strokeAlign": "INSIDE",
-      "category": "New buttons / Buttons"
+      "category": "Table Settings / Table settings - default - default- 1st page"
     },
     {
       "name": "Master-table-Master-table",
@@ -707,6 +789,17 @@ export const tokens = {
       "weight": 1,
       "strokeAlign": "INSIDE",
       "category": "Table for Figma work",
+      "dashPattern": [
+        10,
+        5
+      ]
+    },
+    {
+      "name": "Confirm",
+      "color": "#9B5DFF",
+      "weight": 1,
+      "strokeAlign": "INSIDE",
+      "category": "New buttons",
       "dashPattern": [
         10,
         5
@@ -741,6 +834,20 @@ export const tokens = {
       "category": "Filters / Filters open / Filters / mat-card"
     },
     {
+      "name": "Buttons-pagination",
+      "color": "#7A7A7A",
+      "weight": 1,
+      "strokeAlign": "INSIDE",
+      "category": "Table for Figma work / Master table / pagination"
+    },
+    {
+      "name": "Buttons-Buttons",
+      "color": "#0C98B0",
+      "weight": 1,
+      "strokeAlign": "INSIDE",
+      "category": "New buttons / Buttons"
+    },
+    {
       "name": "Text-field",
       "color": "#C84747",
       "weight": 1,
@@ -753,20 +860,6 @@ export const tokens = {
       "weight": 0.02083333395421505,
       "strokeAlign": "INSIDE",
       "category": "New buttons / Buttons / Variant=Tertiary, State=Disabled, Icon=True"
-    },
-    {
-      "name": "White-New-buttons",
-      "color": "#000000",
-      "weight": 1,
-      "strokeAlign": "INSIDE",
-      "category": "New buttons"
-    },
-    {
-      "name": "White-Table-settings-default-default-1st-page",
-      "color": "#295365",
-      "weight": 0.7155872583389282,
-      "strokeAlign": "INSIDE",
-      "category": "Table Settings / Table settings - default - default- 1st page"
     },
     {
       "name": "Icons",
@@ -801,6 +894,21 @@ export const tokens = {
         10,
         5
       ]
+    },
+    {
+      "name": "Vector-1",
+      "color": "#D7E3EC",
+      "weight": 2,
+      "strokeAlign": "CENTER",
+      "category": "New buttons / Primary button",
+      "strokeCap": "ROUND"
+    },
+    {
+      "name": "Dialog-layout",
+      "color": "#2A4051",
+      "weight": 1,
+      "strokeAlign": "INSIDE",
+      "category": "New buttons"
     },
     {
       "name": "Line04",
@@ -840,6 +948,24 @@ export const tokens = {
   ],
   "opacity": [
     {
+      "name": "Rectangle-10",
+      "opacity": 0.25,
+      "category": "New buttons / Primary button / state=Default, icon=false",
+      "rotation": 68.42
+    },
+    {
+      "name": "Rectangle-9",
+      "opacity": 0.2,
+      "category": "New buttons / Primary button / state=Default, icon=false",
+      "rotation": 68.42
+    },
+    {
+      "name": "Rectangle-11",
+      "opacity": 0.4,
+      "category": "New buttons / Primary button / state=Default, icon=false",
+      "rotation": 14.23
+    },
+    {
       "name": "White",
       "opacity": 1,
       "category": "New buttons / Buttons",
@@ -874,6 +1000,12 @@ export const tokens = {
       "category": "Slider / Sldiers / <Slider> / Slider / _SliderThumb"
     },
     {
+      "name": "Primary-state-Default-icon-false",
+      "opacity": 0.06,
+      "category": "New buttons / Secondary button / state=Default, icon=false",
+      "rotation": 14.23
+    },
+    {
       "name": "background-paper-elevation-0",
       "opacity": 0.8,
       "category": "Slider / Sldiers / <Slider> / Slider / Marks / _SliderMark"
@@ -903,6 +1035,28 @@ export const tokens = {
         {
           "position": 0.806,
           "color": "#00AAC6",
+          "opacity": 1
+        }
+      ],
+      "category": "New buttons"
+    },
+    {
+      "name": "Primary-button",
+      "gradientType": "linear",
+      "stops": [
+        {
+          "position": 0,
+          "color": "#3A3E7B",
+          "opacity": 1
+        },
+        {
+          "position": 0.565,
+          "color": "#614AB0",
+          "opacity": 1
+        },
+        {
+          "position": 1,
+          "color": "#9B5DFF",
           "opacity": 1
         }
       ],
@@ -2647,6 +2801,368 @@ export const tokens = {
           ]
         }
       ]
+    },
+    {
+      "id": "278:5523",
+      "type": "FRAME",
+      "width": 618,
+      "height": 805,
+      "x": 35887,
+      "y": 23,
+      "name": "Buttons",
+      "blendMode": "PASS_THROUGH",
+      "layoutMode": "HORIZONTAL",
+      "counterAxisAlignItems": "CENTER",
+      "layoutSizingHorizontal": "HUG",
+      "children": [
+        {
+          "id": "278:5524",
+          "type": "FRAME",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#F6F6F9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "278:5532",
+      "type": "FRAME",
+      "width": 1450,
+      "height": 806,
+      "x": 36505,
+      "y": 22,
+      "name": "New buttons",
+      "blendMode": "PASS_THROUGH",
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": "#9A9A9A"
+        }
+      ],
+      "children": [
+        {
+          "id": "278:5533",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Default",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5534",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "default + icon",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5535",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Primary",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5536",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Secondary",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5537",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Text",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5538",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Light/Dark mode toggle",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5539",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "multi function button",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5540",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Multi function component",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5541",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Pressed",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5542",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#1D1D1D"
+            }
+          ],
+          "characters": "Disabled",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        }
+      ]
+    },
+    {
+      "id": "278:5667",
+      "type": "FRAME",
+      "width": 1450,
+      "height": 806,
+      "x": 37955,
+      "y": 23,
+      "name": "New buttons",
+      "blendMode": "PASS_THROUGH",
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": "#232D42"
+        }
+      ],
+      "children": [
+        {
+          "id": "278:5668",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Default",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5669",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "default + icon",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5670",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Primary",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5671",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Secondary",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5672",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Text",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5673",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Light/Dark mode toggle",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5674",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "multi function button",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5675",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Multi function component",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5676",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Pressed",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        },
+        {
+          "id": "278:5677",
+          "type": "TEXT",
+          "blendMode": "PASS_THROUGH",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": "#D7E3EC"
+            }
+          ],
+          "characters": "Delete",
+          "fontSize": 20,
+          "fontFamily": "Inter",
+          "fontWeight": 600
+        }
+      ]
     }
   ]
 } as any;
@@ -2656,19 +3172,23 @@ export const designTokens = {
     /** #000000 */
     divider: "#000000",
     /** #F6F6F9 */
-    dialogSectionsMasterTable: "#F6F6F9",
-    /** #091C2A */
-    dialogSectionsNewButtons: "#091C2A",
+    dialogSections: "#F6F6F9",
     /** #F5F5F5 */
     buttonsInput: "#F5F5F5",
     /** #1B293A */
     buttonsTextField: "#1B293A",
+    /** #191836 */
+    buttonsSecondaryButton: "#191836",
     /** #D7E3EC */
     icons1: "#D7E3EC",
     /** #7C88A6 */
     iconsTableCell: "#7C88A6",
+    /** #1D1D1D */
+    bodyText: "#1D1D1D",
     /** #295365 */
     text: "#295365",
+    /** #091C2A */
+    dialogLayout: "#091C2A",
     /** #505D6F */
     disabled: "#505D6F",
     /** #6C7683 */
@@ -2677,6 +3197,8 @@ export const designTokens = {
     dividerStroke: "#7A7A7A",
     /** #F05656 */
     error: "#F05656",
+    /** #232D42 */
+    section: "#232D42",
     /** #25A96B */
     greenSuccess: "#25A96B",
     /** #8E8EA9 */
@@ -2685,24 +3207,34 @@ export const designTokens = {
     hover: "#2F3545",
     /** #BA7714 */
     orangeWarning: "#BA7714",
-    /** #2196F3 */
-    primaryButtons: "#2196F3",
+    /** #8A5ADB */
+    primaryButtons: "#8A5ADB",
     /** #0C98B0 */
     primaryTextField: "#0C98B0",
+    /** #2196F3 */
+    primary3: "#2196F3",
+    /** #9B5DFF */
+    primaryPrimaryButton: "#9B5DFF",
     /** #8B4ED6 */
     purple: "#8B4ED6",
     /** #C84747 */
-    redError: "#C84747",
-    /** #232D42 */
-    section: "#232D42",
+    redErrorTextField: "#C84747",
+    /** #EF355D */
+    redErrorIcons: "#EF355D",
     /** #E7F4FD */
     select: "#E7F4FD",
     /** #223B4E */
-    selected: "#223B4E",
+    selected1: "#223B4E",
+    /** #F0F0F0 */
+    selectedSecondaryButton: "#F0F0F0",
+    /** #192557 */
+    selectedMenuList: "#192557",
     /** #2F3649 */
-    textField: "#2F3649",
+    textFieldTextField: "#2F3649",
+    /** #2B344D */
+    textFieldMenu: "#2B344D",
     /** #FFFFFF */
-    white: "#FFFFFF",
+    whiteWhite: "#FFFFFF",
     /** #ACBFCB */
     textFieldHeader: "#ACBFCB",
     /** #1A99CD */
@@ -2733,7 +3265,7 @@ export const designTokens = {
       fontWeight: 600,
       lineHeight: "normal",
     },
-    seconderyText: {
+    bodyText: {
       fontFamily: "Inter",
       fontSize: 20,
       fontWeight: 500,
@@ -2862,21 +3394,24 @@ export const designTokens = {
   },
   radius: {
     tableCell: { topLeft: 5, topRight: 5, bottomRight: 5, bottomLeft: 5 },
+    buttonsNewButtons: { topLeft: 12, topRight: 12, bottomRight: 12, bottomLeft: 12 },
+    buttonsTextField: { topLeft: 0, topRight: 4, bottomRight: 4, bottomLeft: 0 },
+    menuNewButtons: { topLeft: 8, topRight: 8, bottomRight: 8, bottomLeft: 8 },
+    menuFiltersOpen: { topLeft: 0, topRight: 0, bottomRight: 4, bottomLeft: 4 },
     icons: { topLeft: 11, topRight: 11, bottomRight: 11, bottomLeft: 11 },
     search: { topLeft: 2, topRight: 2, bottomRight: 2, bottomLeft: 2 },
     frame627217: { topLeft: 20, topRight: 0, bottomRight: 0, bottomLeft: 20 },
-    menu: { topLeft: 0, topRight: 0, bottomRight: 4, bottomLeft: 4 },
     primarySlider: { topLeft: 100, topRight: 100, bottomRight: 100, bottomLeft: 100 },
+    primaryStateDefaultIconFalse: { topLeft: 156.69219970703125, topRight: 156.69219970703125, bottomRight: 156.69219970703125, bottomLeft: 156.69219970703125 },
     primarySliderThumb: { topLeft: 20, topRight: 20, bottomRight: 20, bottomLeft: 20 },
     textField: { topLeft: 4, topRight: 4, bottomRight: 0, bottomLeft: 0 },
-    buttons: { topLeft: 0, topRight: 4, bottomRight: 4, bottomLeft: 0 },
-    whiteNewButtons: { topLeft: 6, topRight: 6, bottomRight: 6, bottomLeft: 6 },
-    whiteTableSettingsDefaultDefault1stPage: { topLeft: 0, topRight: 0, bottomRight: 3.708608865737915, bottomLeft: 3.708608865737915 },
+    dialogSectionsNewButtons: { topLeft: 6, topRight: 6, bottomRight: 6, bottomLeft: 6 },
     dialogSectionsMasterTable: { topLeft: 0, topRight: 0, bottomRight: 5, bottomLeft: 5 },
     dialogSectionsMasterTable2: { topLeft: 0, topRight: 5, bottomRight: 0, bottomLeft: 0 },
     matInputSelectionControls: { topLeft: 32, topRight: 32, bottomRight: 32, bottomLeft: 32 },
     frame627157: { topLeft: 3.708608865737915, topRight: 3.708608865737915, bottomRight: 0, bottomLeft: 0 },
     frame627159: { topLeft: 0, topRight: 0, bottomRight: 3.6848485469818115, bottomLeft: 3.6848485469818115 },
+    white: { topLeft: 0, topRight: 0, bottomRight: 3.708608865737915, bottomLeft: 3.708608865737915 },
     divider: { topLeft: 50, topRight: 50, bottomRight: 50, bottomLeft: 50 },
   },
   shadows: {
@@ -2884,26 +3419,30 @@ export const designTokens = {
     image11: [{"type":"drop","color":"#000000","opacity":0.1,"offsetX":-3,"offsetY":5,"blur":4,"spread":3}],
     backgroundPageDialog: [{"type":"drop","color":"#000000","opacity":0.25,"offsetX":0,"offsetY":4,"blur":4,"spread":0}],
     shadowLightSystem: [{"type":"drop","color":"#000000","opacity":0.22,"offsetX":0,"offsetY":1,"blur":1,"spread":0}],
+    designSystemButtonShadow: [{"type":"drop","color":"#160532","opacity":0.2,"offsetX":0,"offsetY":1.5,"blur":3,"spread":0}],
   },
   borders: {
-    buttonsNewButtons: { color: "#0C98B0", weight: 1, strokeAlign: "INSIDE" },
-    buttonsPagination: { color: "#7A7A7A", weight: 1, strokeAlign: "INSIDE" },
-    buttonsButtons: { color: "#0C98B0", weight: 1, strokeAlign: "INSIDE" },
+    textField: { color: "#0C98B0", weight: 1, strokeAlign: "INSIDE" },
+    whiteNewButtons: { color: "#000000", weight: 1, strokeAlign: "INSIDE" },
+    whiteTableSettingsDefaultDefault1stPage: { color: "#295365", weight: 0.7155872583389282, strokeAlign: "INSIDE" },
     masterTableMasterTable: { color: "#000000", weight: 1, strokeAlign: "OUTSIDE" },
     masterTableTableForFigmaWork: { color: "#7A7A7A", weight: 1, strokeAlign: "OUTSIDE" },
     tableCell: { color: "#8B4ED6", weight: 1, strokeAlign: "INSIDE" },
+    confirm: { color: "#9B5DFF", weight: 1, strokeAlign: "INSIDE" },
     inputStateDefaultAssistiveTextFalse: { color: "#295365", weight: 1, strokeAlign: "INSIDE" },
     inputStateDisabledAssistiveTextFalse: { color: "#505D6F", weight: 1, strokeAlign: "INSIDE" },
     inputStateErrorAssistiveTextFalse: { color: "#F05656", weight: 1, strokeAlign: "INSIDE" },
     border304739: { color: "#0E92CB", weight: 1, strokeAlign: "INSIDE" },
+    buttonsPagination: { color: "#7A7A7A", weight: 1, strokeAlign: "INSIDE" },
+    buttonsButtons: { color: "#0C98B0", weight: 1, strokeAlign: "INSIDE" },
     textField: { color: "#C84747", weight: 1, strokeAlign: "INSIDE" },
     disabled: { color: "#505D6F", weight: 0.02083333395421505, strokeAlign: "INSIDE" },
-    whiteNewButtons: { color: "#000000", weight: 1, strokeAlign: "INSIDE" },
-    whiteTableSettingsDefaultDefault1stPage: { color: "#295365", weight: 0.7155872583389282, strokeAlign: "INSIDE" },
     icons: { color: "#D7E3EC", weight: 0.30000001192092896, strokeAlign: "OUTSIDE" },
     border304597: { color: "#0E92CB", weight: 2, strokeAlign: "CENTER" },
     border304598: { color: "#0E92CB", weight: 3, strokeAlign: "CENTER" },
     frame627149: { color: "#0E92CB", weight: 1, strokeAlign: "INSIDE" },
+    vector1: { color: "#D7E3EC", weight: 2, strokeAlign: "CENTER" },
+    dialogLayout: { color: "#2A4051", weight: 1, strokeAlign: "INSIDE" },
     line04: { color: "#7A7A7A", weight: 1, strokeAlign: "CENTER" },
     divider: { color: "#000000", weight: 1, strokeAlign: "CENTER" },
     backgroundPageDialogCheckbox: { color: "#000000", weight: 1.5, strokeAlign: "INSIDE" },
@@ -2911,20 +3450,29 @@ export const designTokens = {
     select: { color: "#0E92CB", weight: 1.5, strokeAlign: "INSIDE" },
   },
   opacity: {
+    rectangle10: 0.25,
+    rectangle9: 0.2,
+    rectangle11: 0.4,
     white: 1,
     masterTable: 1,
     sorting: 1,
     tableCell: 1,
     primarySlider: 0.38,
     primarySliderThumb: 0.16,
+    primaryStateDefaultIconFalse: 0.06,
     backgroundPaperElevation0: 0.8,
     bodyText: 0.6,
     icons: 1,
   },
   gradients: {
     buttons: {"type":"linear","stops":[{"position":0,"color":"#005DB1","opacity":1},{"position":0.806,"color":"#00AAC6","opacity":1}]},
+    primaryButton: {"type":"linear","stops":[{"position":0,"color":"#3A3E7B","opacity":1},{"position":0.565,"color":"#614AB0","opacity":1},{"position":1,"color":"#9B5DFF","opacity":1}]},
   },
   layoutGrids: {
+  },
+  elevations: {
+    elevation8: [{"type":"drop","color":"#000000","opacity":0.2,"offsetX":0,"offsetY":5,"blur":5,"spread":-3},{"type":"drop","color":"#000000","opacity":0.14,"offsetX":0,"offsetY":8,"blur":10,"spread":1},{"type":"drop","color":"#000000","opacity":0.12,"offsetX":0,"offsetY":3,"blur":14,"spread":2}],
+    elevation2: [{"type":"drop","color":"#000000","opacity":0.2,"offsetX":0,"offsetY":3,"blur":1,"spread":-2},{"type":"drop","color":"#000000","opacity":0.14,"offsetX":0,"offsetY":2,"blur":2,"spread":0},{"type":"drop","color":"#000000","opacity":0.12,"offsetX":0,"offsetY":1,"blur":5,"spread":0}],
   },
 } as const;
 
