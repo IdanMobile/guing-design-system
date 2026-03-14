@@ -1,59 +1,58 @@
 // TextField.stories.tsx
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import TextField, { TextFieldProps } from './TextField';
+import type { Meta, StoryObj } from '@storybook/react';
+import { TextField } from './TextField';
 
-export default {
+const meta = {
   title: 'Components/TextField',
   component: TextField,
-  argTypes: {
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
-    },
-    variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'outlined', 'filled'],
-      },
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
-    },
+  args: {
+    placeholder: 'Enter text',
   },
-} as Meta;
+} satisfies Meta<typeof TextField>;
 
-const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  size: 'medium',
-  variant: 'default',
-  disabled: false,
+export const Default: Story = {
+  args: {
+    variant: 'default',
+    size: 'md',
+    state: 'default',
+  },
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
-  size: 'medium',
-  variant: 'outlined',
-  disabled: false,
+export const Flat: Story = {
+  args: {
+    variant: 'flat',
+  },
 };
 
-export const Filled = Template.bind({});
-Filled.args = {
-  size: 'medium',
-  variant: 'filled',
-  disabled: false,
+export const Stroked: Story = {
+  args: {
+    variant: 'stroked',
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  size: 'medium',
-  variant: 'default',
-  disabled: true,
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    state: 'disabled',
+  },
+};
+
+export const Error: Story = {
+  args: {
+    state: 'error',
+  },
 };
