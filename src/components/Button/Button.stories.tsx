@@ -4,9 +4,7 @@ import { Button } from './Button';
 const meta = {
   title: 'Components/Button',
   component: Button,
-  args: {
-    children: 'Click me',
-  },
+  args: { children: 'Click me' },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -28,22 +26,18 @@ export const Basic: Story = {
   args: { variant: 'basic' },
 };
 
-export const Toggle: Story = {
-  args: { variant: 'toggle' },
-};
-
-export const MultiFunction: Story = {
-  args: { variant: 'multi-function' },
-};
-
 export const Pressed: Story = {
-  args: { variant: 'pressed' },
+  args: { pressed: true },
 };
 
 export const Disabled: Story = {
-  args: { variant: 'disabled', disabled: true },
+  args: { disabled: true },
 };
 
-export const Icon: Story = {
-  args: { variant: 'icon' },
+export const WithIcon: Story = {
+  args: { withIcon: true },
+};
+
+export const LightDarkToggle: Story = {
+  args: { children: 'Toggle Mode', variant: 'default' },
 };

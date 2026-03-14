@@ -1,48 +1,62 @@
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+/**
+ * Button component props
+ */
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The variant of the button.
+   * The variant of the button
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic';
   /**
-   * The size of the button.
+   * The size of the button
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Additional className for styling overrides.
+   * If true, the button will be in a pressed state
+   */
+  pressed?: boolean;
+  /**
+   * If true, the button will be disabled
+   */
+  disabled?: boolean;
+  /**
+   * If true, the button will include an icon
+   */
+  withIcon?: boolean;
+  /**
+   * Additional class name for custom styling
    */
   className?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
+/**
+ * Button component
+ */
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
   size = 'md',
+  pressed = false,
+  disabled = false,
+  withIcon = false,
   className,
+  children,
   ...props
 }, ref) => {
   const styles: React.CSSProperties = {
+    backgroundColor: variant === 'default' ? 'var(--color-primary-buttons)' : 'var(--color-buttons-secondary-button)',
+    color: 'var(--color-text)',
     padding: size === 'sm' ? '8px 16px' : size === 'lg' ? '16px 32px' : '12px 24px',
-    backgroundColor: variant === 'default' ? 'var(--color-primary-buttons)' :
-                    variant === 'flat' ? 'transparent' :
-                    variant === 'stroked' ? 'transparent' :
-                    variant === 'basic' ? 'var(--color-buttons-secondary-button)' :
-                    variant === 'toggle' ? 'var(--color-selected-secondary-button)' :
-                    variant === 'multi-function' ? 'var(--color-primary-primary-button)' :
-                    variant === 'pressed' ? 'var(--color-hover)' :
-                    variant === 'disabled' ? 'var(--color-disabled)' :
-                    'var(--color-icons-1)',
-    color: variant === 'disabled' ? 'var(--color-disabled-text)' : 'var(--color-white-white)',
     border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
-    borderRadius: '4px',
-    cursor: variant === 'disabled' ? 'not-allowed' : 'pointer',
-    display: 'inline-flex',
+    opacity: disabled ? 0.5 : 1,
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: 'var(--font-inter-medium-*)',
-    fontSize: '14px',
-    fontWeight: 500,
-    lineHeight: '20px',
+    fontWeight: 600,
+    fontSize: 'var(--font-large-header-*)',
+    transition: 'background-color 0.3s',
+    ...(pressed && { backgroundColor: 'var(--color-hover)' }),
   };
 
   return (
@@ -50,14 +64,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       className={className}
       style={styles}
-      disabled={variant === 'disabled'}
+      disabled={disabled}
       {...props}
-    />
+    >
+      {withIcon && <span style={{ marginRight: '8px' }}>🔍</span>}
+      {children}
+    </button>
   );
 });
 
 Button.displayName = 'Button';
 
-export { Button };
-export type { ButtonProps };
 export default Button;
