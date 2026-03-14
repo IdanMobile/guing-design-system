@@ -1,50 +1,43 @@
+// TextField.tsx
 import React, { forwardRef } from 'react';
-import type { InputHTMLAttributes } from 'react';
 
-/**
- * TextField component props
- */
-export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * Size of the text field
-   * @default 'md'
+   * The size of the text field.
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Variant of the text field
-   * @default 'default'
+   * The variant of the text field.
    */
-  variant?: 'default' | 'outlined' | 'filled';
+  variant?: 'outlined' | 'filled';
   /**
-   * State of the text field
-   * @default 'enabled'
+   * The state of the text field.
    */
-  state?: 'enabled' | 'disabled' | 'error';
+  state?: 'default' | 'error' | 'disabled';
   /**
-   * Additional class name for styling
+   * Additional className for styling overrides.
    */
   className?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'md',
-  variant = 'default',
-  state = 'enabled',
+  variant = 'outlined',
+  state = 'default',
   className,
   ...props
 }, ref) => {
   const styles: React.CSSProperties = {
-    padding: size === 'sm' ? '8px' : size === 'lg' ? '16px' : '12px',
+    padding: size === 'sm' ? '4px 8px' : size === 'md' ? '8px 12px' : '12px 16px',
     border: variant === 'outlined' ? '1px solid var(--color-divider-stroke)' : 'none',
-    backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white-white)',
-    color: state === 'error' ? 'var(--color-red-error-text-field)' : 'var(--color-body-text)',
-    opacity: state === 'disabled' ? 0.5 : 1,
+    backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'transparent',
+    color: state === 'disabled' ? 'var(--color-disabled-text)' : 'var(--color-body-text)',
     cursor: state === 'disabled' ? 'not-allowed' : 'text',
-    fontFamily: 'var(--font-inter-regular-*)',
-    fontSize: '14px',
-    lineHeight: '20px',
     width: '100%',
     boxSizing: 'border-box',
+    fontFamily: 'var(--font-body-*)',
+    fontSize: '14px',
+    lineHeight: '20px',
   };
 
   return (
@@ -58,7 +51,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   );
 });
 
-TextField.displayName = 'TextField';
-
 export { TextField };
 export default TextField;
+export type { TextFieldProps };

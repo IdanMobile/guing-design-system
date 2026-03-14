@@ -3,8 +3,17 @@ import tokens from '../../design-tokens/tokens.json';
 
 export const Borders = () => {
   const borders = (tokens as any).borders || [];
+  const sizes = (tokens as any).sizes || [];
+  const gaps = (tokens as any).gaps || [];
+  const allSizes = [...sizes, ...gaps];
 
   const getStyle = (b: any) => (b.dashPattern && b.dashPattern.length > 0) ? 'dashed' : 'solid';
+  
+  const getSizeName = (weight: number) => {
+    // Attempt to find a matching size token (like "XS", "S", etc)
+    const match = allSizes.find(s => Math.abs(s.value - weight) < 0.01);
+    return match ? match.name : null;
+  };
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
@@ -13,62 +22,68 @@ export const Borders = () => {
         <p style={{ color: '#666' }}>No border tokens found. Sync tokens from Figma to see them here.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          {borders.map((b: any) => (
-            <div key={b.name} style={{ display: 'flex', gap: '2rem', padding: '1.5rem', borderBottom: '1px solid #f0f0f0', alignItems: 'flex-start' }}>
-              <div style={{
-                width: '120px',
-                minWidth: '120px',
-                height: '80px',
-                border: `${b.weight}px ${getStyle(b)} ${b.color}`,
-                borderRadius: '4px',
-              }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
-                <div style={{ fontWeight: 'bold', fontSize: '1rem' }}>{b.name}</div>
-                {b.category && (
-                  <div style={{ fontSize: '0.7rem', color: '#999', textTransform: 'uppercase' }}>{b.category}</div>
-                )}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1rem', marginTop: '0.25rem', alignItems: 'center' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                    <div style={{ width: '12px', height: '12px', backgroundColor: b.color, borderRadius: '2px', border: '1px solid #ddd' }} />
-                    <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{b.color}</span>
+          {borders.map((b: any) => {
+            const sizeName = getSizeName(b.weight);
+            return (
+              <div key={b.name} style={{ display: 'flex', gap: '2rem', padding: '1.5rem', borderBottom: '1px solid #f0f0f0', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '120px',
+                  minWidth: '120px',
+                  height: '80px',
+                  border: `${b.weight}px ${getStyle(b)} ${b.color}`,
+                  borderRadius: '4px',
+                }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+                  <div style={{ fontWeight: 'bold', fontSize: '1rem' }}>{b.name}</div>
+                  {b.category && (
+                    <div style={{ fontSize: '0.7rem', color: '#999', textTransform: 'uppercase' }}>{b.category}</div>
+                  )}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1rem', marginTop: '0.25rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <div style={{ width: '12px', height: '12px', backgroundColor: b.color, borderRadius: '2px', border: '1px solid #ddd' }} />
+                      <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{b.color}</span>
+                    </div>
+                    <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                    <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>
+                      {b.weight}px
+                      {sizeName && <span style={{ color: '#888', marginLeft: '0.35rem' }}>({sizeName})</span>}
+                    </span>
+                    <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                    <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{getStyle(b)}</span>
+                    {b.strokeAlign && (
+                      <>
+                        <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                        <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>align: {b.strokeAlign.toLowerCase()}</span>
+                      </>
+                    )}
+                    {b.strokeCap && (
+                      <>
+                        <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                        <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>cap: {b.strokeCap.toLowerCase()}</span>
+                      </>
+                    )}
+                    {b.strokeJoin && (
+                      <>
+                        <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                        <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>join: {b.strokeJoin.toLowerCase()}</span>
+                      </>
+                    )}
+                    {b.dashPattern && b.dashPattern.length > 0 && (
+                      <>
+                        <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
+                        <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>dash: [{b.dashPattern.join(', ')}]</span>
+                      </>
+                    )}
                   </div>
-                  <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                  <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{b.weight}px</span>
-                  <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                  <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{getStyle(b)}</span>
-                  {b.strokeAlign && (
-                    <>
-                      <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>align: {b.strokeAlign.toLowerCase()}</span>
-                    </>
-                  )}
-                  {b.strokeCap && (
-                    <>
-                      <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>cap: {b.strokeCap.toLowerCase()}</span>
-                    </>
-                  )}
-                  {b.strokeJoin && (
-                    <>
-                      <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>join: {b.strokeJoin.toLowerCase()}</span>
-                    </>
-                  )}
-                  {b.dashPattern && b.dashPattern.length > 0 && (
-                    <>
-                      <span style={{ fontSize: '0.8rem', color: '#ccc' }}>{"·"}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#888', fontFamily: 'monospace' }}>dash: [{b.dashPattern.join(', ')}]</span>
-                    </>
+                  {b.strokeTopWeight !== undefined && (
+                    <div style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace', marginTop: '0.25rem' }}>
+                      per-side: top {b.strokeTopWeight}px · right {b.strokeRightWeight}px · bottom {b.strokeBottomWeight}px · left {b.strokeLeftWeight}px
+                    </div>
                   )}
                 </div>
-                {b.strokeTopWeight !== undefined && (
-                  <div style={{ fontSize: '0.75rem', color: '#888', fontFamily: 'monospace', marginTop: '0.25rem' }}>
-                    per-side: top {b.strokeTopWeight}px · right {b.strokeRightWeight}px · bottom {b.strokeBottomWeight}px · left {b.strokeLeftWeight}px
-                  </div>
-                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
