@@ -1,52 +1,59 @@
 // LightDarkModeToggle.stories.tsx
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import LightDarkModeToggle from './LightDarkModeToggle';
+import { Meta, StoryObj } from '@storybook/react';
+import LightDarkModeToggle, { LightDarkModeToggleProps } from './LightDarkModeToggle';
 
-export default {
+const meta: Meta<typeof LightDarkModeToggle> = {
   title: 'Components/LightDarkModeToggle',
   component: LightDarkModeToggle,
   argTypes: {
     size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
+      control: 'select',
+      options: ['small', 'medium', 'large'],
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'flat', 'stroked'],
-      },
+      control: 'select',
+      options: ['default', 'flat', 'stroked'],
     },
-    initialState: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
+    state: {
+      control: 'select',
+      options: ['default', 'pressed', 'disabled'],
     },
   },
-} as Meta;
-
-const Template: Story = (args) => <LightDarkModeToggle {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  size: 'medium',
-  variant: 'default',
-  initialState: 'light',
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  size: 'medium',
-  variant: 'flat',
-  initialState: 'light',
+export default meta satisfies Meta<typeof LightDarkModeToggle>;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    size: 'medium',
+    variant: 'default',
+    state: 'default',
+  },
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  size: 'medium',
-  variant: 'stroked',
-  initialState: 'light',
+export const Flat: Story = {
+  args: {
+    size: 'medium',
+    variant: 'flat',
+    state: 'default',
+  },
+};
+
+export const Stroked: Story = {
+  args: {
+    size: 'medium',
+    variant: 'stroked',
+    state: 'default',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    size: 'medium',
+    variant: 'default',
+    state: 'disabled',
+  },
 };

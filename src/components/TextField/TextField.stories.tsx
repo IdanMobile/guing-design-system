@@ -1,59 +1,50 @@
 // TextField.stories.tsx
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import TextField, { TextFieldProps } from './TextField';
 
-export default {
+const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',
   component: TextField,
   argTypes: {
     size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
+      control: 'select',
+      options: ['small', 'medium', 'large'],
     },
     variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'outlined', 'filled'],
-      },
+      control: 'select',
+      options: ['outlined', 'filled', 'standard'],
     },
-    disabled: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
+    state: {
+      control: 'select',
+      options: ['default', 'error', 'disabled'],
     },
   },
-} as Meta;
+};
 
-const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
+export default meta;
 
-export const Default = Template.bind({});
+const Template: StoryObj<typeof meta> = (args) => <TextField {...args} />;
+
+export const Default: StoryObj<typeof meta> = Template.bind({});
 Default.args = {
   size: 'medium',
-  variant: 'default',
-  disabled: false,
+  variant: 'outlined',
+  state: 'default',
+  placeholder: 'Enter text',
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
+export const Error: StoryObj<typeof meta> = Template.bind({});
+Error.args = {
   size: 'medium',
   variant: 'outlined',
-  disabled: false,
+  state: 'error',
+  placeholder: 'Enter text',
 };
 
-export const Filled = Template.bind({});
-Filled.args = {
-  size: 'medium',
-  variant: 'filled',
-  disabled: false,
-};
-
-export const Disabled = Template.bind({});
+export const Disabled: StoryObj<typeof meta> = Template.bind({});
 Disabled.args = {
   size: 'medium',
-  variant: 'default',
-  disabled: true,
+  variant: 'outlined',
+  state: 'disabled',
+  placeholder: 'Enter text',
 };

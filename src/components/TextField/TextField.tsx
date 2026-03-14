@@ -1,61 +1,74 @@
 // TextField.tsx
-import React, { InputHTMLAttributes, forwardRef } from 'react';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * The size of the text field
+   * The size of the text field.
    */
   size?: 'small' | 'medium' | 'large';
   /**
-   * The variant of the text field
+   * The variant of the text field.
    */
-  variant?: 'default' | 'outlined' | 'filled';
+  variant?: 'outlined' | 'filled' | 'standard';
   /**
-   * Whether the text field is disabled
+   * The state of the text field.
    */
-  disabled?: boolean;
+  state?: 'default' | 'error' | 'disabled';
   /**
-   * Additional class name for custom styling
+   * Additional class name for custom styling.
    */
   className?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'medium',
-  variant = 'default',
-  disabled = false,
-  className = '',
+  variant = 'outlined',
+  state = 'default',
+  className,
   ...props
 }, ref) => {
   const styles = {
     base: {
+      fontFamily: 'var(--font-inter-regular-*)',
+      fontSize: '14px',
       padding: '8px 12px',
       borderRadius: '4px',
       border: '1px solid',
       outline: 'none',
-      fontFamily: 'var(--font-inter-regular)',
-      fontSize: '14px',
-      lineHeight: '20px',
-      backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white)',
-      borderColor: variant === 'outlined' ? 'var(--color-divider-stroke)' : 'transparent',
-      color: 'var(--color-text)',
-      width: size === 'small' ? '150px' : size === 'large' ? '300px' : '200px',
-      cursor: disabled ? 'not-allowed' : 'text',
-      opacity: disabled ? 0.5 : 1,
+      width: '100%',
+      transition: 'border-color 0.2s',
+    },
+    size: {
+      small: { fontSize: '12px', padding: '6px 10px' },
+      medium: { fontSize: '14px', padding: '8px 12px' },
+      large: { fontSize: '16px', padding: '10px 14px' },
+    },
+    variant: {
+      outlined: { backgroundColor: 'var(--color-white-white)', borderColor: 'var(--color-divider-stroke)' },
+      filled: { backgroundColor: 'var(--color-buttons-input)', borderColor: 'transparent' },
+      standard: { backgroundColor: 'transparent', borderColor: 'transparent', borderBottom: '1px solid var(--color-divider-stroke)' },
+    },
+    state: {
+      default: { color: 'var(--color-body-text)' },
+      error: { color: 'var(--color-error)', borderColor: 'var(--color-red-error-text-field)' },
+      disabled: { color: 'var(--color-disabled-text)', backgroundColor: 'var(--color-disabled)', cursor: 'not-allowed' },
     },
   };
 
   return (
     <input
       ref={ref}
-      type="text"
-      disabled={disabled}
       className={className}
-      style={styles.base}
+      style={{
+        ...styles.base,
+        ...styles.size[size],
+        ...styles.variant[variant],
+        ...styles.state[state],
+      }}
+      disabled={state === 'disabled'}
       {...props}
     />
   );
 });
 
-export { TextField };
 export default TextField;
