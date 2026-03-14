@@ -1,6 +1,6 @@
 {
-  "version": "0.0.13",
-  "generatedAt": "2026-03-14T14:05:10.015Z",
+  "version": "0.0.14",
+  "generatedAt": "2026-03-14T14:29:09.398Z",
   "components": [
     {
       "name": "TextField",
@@ -10,25 +10,22 @@
         "size": {
           "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "default": "'md'",
-          "description": "Size of the text field"
+          "description": "The size of the text field."
         },
         "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
+          "type": "'outlined' | 'filled'",
           "required": false,
-          "default": "'default'",
-          "description": "Variant of the text field"
+          "description": "The variant of the text field."
         },
         "state": {
-          "type": "'enabled' | 'disabled' | 'error'",
+          "type": "'default' | 'error' | 'disabled'",
           "required": false,
-          "default": "'enabled'",
-          "description": "State of the text field"
+          "description": "The state of the text field."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for styling"
+          "description": "Additional className for styling overrides."
         }
       }
     },
@@ -38,78 +35,19 @@
       "description": "Button component",
       "props": {
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'icon'",
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi' | 'pressed' | 'disabled' | 'icon'",
           "required": false,
-          "description": "The variant of the button."
+          "description": "Button variant to apply different styles"
         },
         "size": {
           "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "The size of the button."
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be disabled."
+          "description": "Size of the button"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional className for custom styling."
-        }
-      }
-    },
-    {
-      "name": "LightDarkModeToggle",
-      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
-      "description": "LightDarkModeToggle component",
-      "props": {
-        "size": {
-          "type": "'sm' | 'md' | 'lg'",
-          "required": false,
-          "description": "The size of the toggle button.\n'sm' for small, 'md' for medium, 'lg' for large."
-        },
-        "variant": {
-          "type": "'default' | 'flat'",
-          "required": false,
-          "description": "The variant of the toggle button.\n'default' for standard, 'flat' for flat design."
-        },
-        "initialState": {
-          "type": "boolean",
-          "required": false,
-          "description": "The initial state of the toggle button.\ntrue for dark mode, false for light mode."
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class names for custom styling."
-        }
-      }
-    },
-    {
-      "name": "MultiFunctionButton",
-      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
-      "description": "MultiFunctionButton component",
-      "props": {
-        "variant": {
-          "type": "'default' | 'primary' | 'secondary' | 'danger'",
-          "required": false,
-          "description": "The variant of the button.\nCan be 'default', 'primary', 'secondary', or 'danger'."
-        },
-        "size": {
-          "type": "'sm' | 'md' | 'lg'",
-          "required": false,
-          "description": "The size of the button.\nCan be 'sm', 'md', or 'lg'."
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be disabled."
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class names to apply to the button."
+          "description": "Additional className for custom styling"
         }
       }
     }

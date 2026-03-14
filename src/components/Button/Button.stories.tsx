@@ -7,9 +7,6 @@ const meta = {
   component: Button,
   args: {
     children: 'Click me',
-    variant: 'default',
-    size: 'md',
-    disabled: false,
   },
 } satisfies Meta<typeof Button>;
 
@@ -32,18 +29,22 @@ export const Basic: Story = {
   args: { variant: 'basic' },
 };
 
-export const Icon: Story = {
-  args: { variant: 'icon' },
+export const Toggle: Story = {
+  args: { variant: 'toggle' },
 };
 
-export const Small: Story = {
-  args: { size: 'sm' },
+export const Multi: Story = {
+  args: { variant: 'multi' },
 };
 
-export const Large: Story = {
-  args: { size: 'lg' },
+export const Pressed: Story = {
+  args: { variant: 'pressed' },
 };
 
 export const Disabled: Story = {
-  args: { disabled: true },
+  args: { variant: 'disabled' },
+};
+
+export const Icon: Story = {
+  args: { variant: 'icon' },
 };
