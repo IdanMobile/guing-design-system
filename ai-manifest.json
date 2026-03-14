@@ -1,6 +1,6 @@
 {
-  "version": "0.0.10",
-  "generatedAt": "2026-03-14T13:20:27.009Z",
+  "version": "0.0.12",
+  "generatedAt": "2026-03-14T13:27:00.693Z",
   "components": [
     {
       "name": "TextField",
@@ -10,17 +10,17 @@
         "size": {
           "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "Size of the text field"
+          "description": "The size of the text field"
         },
         "variant": {
-          "type": "'default' | 'flat' | 'stroked'",
+          "type": "'default' | 'filled' | 'outlined'",
           "required": false,
-          "description": "Variant of the text field"
+          "description": "The variant of the text field"
         },
         "state": {
-          "type": "'default' | 'disabled' | 'error'",
+          "type": "'normal' | 'error' | 'disabled'",
           "required": false,
-          "description": "State of the text field"
+          "description": "The state of the text field"
         },
         "className": {
           "type": "string",
@@ -32,17 +32,17 @@
     {
       "name": "Button",
       "path": "src/components/Button/Button.tsx",
-      "description": "A customizable button component with multiple variants and sizes.",
+      "description": "Button component",
       "props": {
         "variant": {
-          "type": "ButtonVariant",
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi' | 'pressed' | 'disabled' | 'icon'",
           "required": false,
-          "description": "The variant of the button"
+          "description": "Button variant"
         },
         "size": {
-          "type": "ButtonSize",
+          "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "The size of the button"
+          "description": "Button size"
         },
         "className": {
           "type": "string",
