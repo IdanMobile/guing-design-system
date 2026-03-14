@@ -7,9 +7,6 @@ const meta = {
   component: Button,
   args: {
     children: 'Click me',
-    variant: 'default',
-    size: 'md',
-    disabled: false,
   },
 } satisfies Meta<typeof Button>;
 
