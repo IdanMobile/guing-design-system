@@ -1,74 +1,76 @@
 // Button.stories.tsx
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
 
-export default {
+const meta: Meta<ButtonProps> = {
   title: 'Components/Button',
   component: Button,
   argTypes: {
     variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic', 'icon'],
-      },
+      control: 'select',
+      options: ['default', 'flat', 'stroked', 'basic', 'icon'],
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
+      control: 'select',
+      options: ['small', 'medium', 'large'],
     },
     disabled: {
       control: 'boolean',
     },
-    children: {
-      control: 'text',
-    },
   },
-} as Meta;
-
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  variant: 'default',
-  size: 'medium',
-  children: 'Button',
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  variant: 'flat',
-  size: 'medium',
-  children: 'Button',
+export default meta;
+
+const Template: StoryObj<ButtonProps> = {
+  args: {
+    children: 'Button',
+    variant: 'default',
+    size: 'medium',
+    disabled: false,
+  },
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  variant: 'stroked',
-  size: 'medium',
-  children: 'Button',
+export const Default: StoryObj<ButtonProps> = {
+  ...Template,
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  variant: 'basic',
-  size: 'medium',
-  children: 'Button',
+export const Flat: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    ...Template.args,
+    variant: 'flat',
+  },
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
-  variant: 'icon',
-  size: 'medium',
-  children: '🔍',
+export const Stroked: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    ...Template.args,
+    variant: 'stroked',
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  variant: 'default',
-  size: 'medium',
-  disabled: true,
-  children: 'Button',
+export const Basic: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    ...Template.args,
+    variant: 'basic',
+  },
+};
+
+export const Icon: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    ...Template.args,
+    variant: 'icon',
+  },
+};
+
+export const Disabled: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    ...Template.args,
+    disabled: true,
+  },
 };
