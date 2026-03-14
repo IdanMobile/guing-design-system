@@ -1,53 +1,26 @@
 {
-  "version": "0.0.8",
-  "generatedAt": "2026-03-05T15:21:30.545Z",
+  "version": "0.0.9",
+  "generatedAt": "2026-03-14T12:33:34.417Z",
   "components": [
     {
       "name": "TextField",
       "path": "src/components/TextField/TextField.tsx",
       "description": "TextField component",
       "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the text field"
-        },
         "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
+          "type": "'default' | 'light' | 'dark'",
           "required": false,
-          "description": "The variant of the text field"
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "Whether the text field is disabled"
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class name for custom styling"
-        }
-      }
-    },
-    {
-      "name": "Button",
-      "path": "src/components/Button/Button.tsx",
-      "description": "Button component",
-      "props": {
-        "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'icon'",
-          "required": false,
-          "description": "The variant of the button."
+          "description": "The variant of the text field, determining its background color."
         },
         "size": {
           "type": "'small' | 'medium' | 'large'",
           "required": false,
-          "description": "The size of the button."
+          "description": "The size of the text field."
         },
         "disabled": {
           "type": "boolean",
           "required": false,
-          "description": "If true, the button will be disabled."
+          "description": "If true, the text field will be disabled."
         },
         "className": {
           "type": "string",
@@ -57,29 +30,54 @@
       }
     },
     {
-      "name": "LightDarkModeToggle",
-      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
-      "description": "LightDarkModeToggle component",
+      "name": "Button",
+      "path": "src/components/Button/Button.tsx",
+      "description": "Button component",
       "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the toggle button"
-        },
         "variant": {
-          "type": "'default' | 'flat' | 'stroked'",
+          "type": "'default' | 'flat' | 'stroked' | 'basic'",
           "required": false,
-          "description": "The variant of the toggle button"
+          "description": "The variant of the button.\n- 'default': Standard button\n- 'flat': Button with no elevation\n- 'stroked': Button with a border\n- 'basic': Minimal button"
         },
-        "initialState": {
-          "type": "'light' | 'dark'",
+        "disabled": {
+          "type": "boolean",
           "required": false,
-          "description": "The initial state of the toggle button"
+          "description": "If true, the button will be disabled."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class names for styling"
+          "description": "Additional class names to apply to the button."
+        }
+      }
+    },
+    {
+      "name": "LightDarkModeToggleButton",
+      "path": "src/components/LightDarkModeToggleButton/LightDarkModeToggleButton.tsx",
+      "description": "LightDarkModeToggleButton component",
+      "props": {
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "default": "'medium'",
+          "description": "The size of the button"
+        },
+        "variant": {
+          "type": "'default' | 'flat' | 'stroked'",
+          "required": false,
+          "default": "'default'",
+          "description": "The variant of the button"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": "false",
+          "description": "If true, the button will be disabled"
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class name for styling"
         }
       }
     },
@@ -109,10 +107,53 @@
           "description": "Additional class name for custom styling"
         }
       }
+    },
+    {
+      "name": "IconButton",
+      "path": "src/components/IconButton/IconButton.tsx",
+      "description": "IconButton component",
+      "props": {
+        "icon": {
+          "type": "React.ReactNode",
+          "required": true,
+          "description": "The icon to be displayed inside the button."
+        },
+        "size": {
+          "type": "'small' | 'medium' | 'large'",
+          "required": false,
+          "description": "The size of the button.\n'small' | 'medium' | 'large'"
+        },
+        "variant": {
+          "type": "'default' | 'primary' | 'secondary'",
+          "required": false,
+          "description": "The variant of the button.\n'default' | 'primary' | 'secondary'"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "description": "Additional class names to apply to the button."
+        }
+      }
     }
   ],
   "tokens": {
-    "colors": 28,
-    "typography": 24
+    "colors": 36,
+    "typography": 24,
+    "radius": 21,
+    "shadows": 5,
+    "elevations": 2,
+    "borders": 26,
+    "gaps": 0,
+    "sizes": 0,
+    "opacity": 13,
+    "gradients": 2,
+    "blurs": 0,
+    "layoutGrids": 1,
+    "icons": 0
   }
 }
