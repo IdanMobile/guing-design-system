@@ -1,6 +1,6 @@
 {
-  "version": "0.0.8",
-  "generatedAt": "2026-03-05T15:21:30.545Z",
+  "version": "0.0.10",
+  "generatedAt": "2026-03-14T13:20:27.009Z",
   "components": [
     {
       "name": "TextField",
@@ -8,100 +8,41 @@
       "description": "TextField component",
       "props": {
         "size": {
-          "type": "'small' | 'medium' | 'large'",
+          "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "The size of the text field"
+          "description": "Size of the text field"
         },
         "variant": {
-          "type": "'default' | 'outlined' | 'filled'",
+          "type": "'default' | 'flat' | 'stroked'",
           "required": false,
-          "description": "The variant of the text field"
+          "description": "Variant of the text field"
         },
-        "disabled": {
-          "type": "boolean",
+        "state": {
+          "type": "'default' | 'disabled' | 'error'",
           "required": false,
-          "description": "Whether the text field is disabled"
+          "description": "State of the text field"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional class name for styling"
         }
       }
     },
     {
       "name": "Button",
       "path": "src/components/Button/Button.tsx",
-      "description": "Button component",
+      "description": "A customizable button component with multiple variants and sizes.",
       "props": {
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'icon'",
-          "required": false,
-          "description": "The variant of the button."
-        },
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the button."
-        },
-        "disabled": {
-          "type": "boolean",
-          "required": false,
-          "description": "If true, the button will be disabled."
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class name for custom styling."
-        }
-      }
-    },
-    {
-      "name": "LightDarkModeToggle",
-      "path": "src/components/LightDarkModeToggle/LightDarkModeToggle.tsx",
-      "description": "LightDarkModeToggle component",
-      "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the toggle button"
-        },
-        "variant": {
-          "type": "'default' | 'flat' | 'stroked'",
-          "required": false,
-          "description": "The variant of the toggle button"
-        },
-        "initialState": {
-          "type": "'light' | 'dark'",
-          "required": false,
-          "description": "The initial state of the toggle button"
-        },
-        "className": {
-          "type": "string",
-          "required": false,
-          "description": "Additional class names for styling"
-        }
-      }
-    },
-    {
-      "name": "MultiFunctionButton",
-      "path": "src/components/MultiFunctionButton/MultiFunctionButton.tsx",
-      "description": "MultiFunctionButton component",
-      "props": {
-        "size": {
-          "type": "'small' | 'medium' | 'large'",
-          "required": false,
-          "description": "The size of the button"
-        },
-        "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic'",
+          "type": "ButtonVariant",
           "required": false,
           "description": "The variant of the button"
         },
-        "disabled": {
-          "type": "boolean",
+        "size": {
+          "type": "ButtonSize",
           "required": false,
-          "description": "If true, the button will be disabled"
+          "description": "The size of the button"
         },
         "className": {
           "type": "string",
@@ -112,7 +53,18 @@
     }
   ],
   "tokens": {
-    "colors": 28,
-    "typography": 24
+    "colors": 36,
+    "typography": 24,
+    "radius": 21,
+    "shadows": 5,
+    "elevations": 2,
+    "borders": 26,
+    "gaps": 0,
+    "sizes": 0,
+    "opacity": 13,
+    "gradients": 2,
+    "blurs": 0,
+    "layoutGrids": 1,
+    "icons": 0
   }
 }
