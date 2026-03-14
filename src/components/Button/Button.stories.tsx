@@ -4,7 +4,9 @@ import { Button } from './Button';
 const meta = {
   title: 'Components/Button',
   component: Button,
-  args: { children: 'Click me' },
+  args: {
+    children: 'Click me',
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -43,5 +45,5 @@ export const Disabled: Story = {
 };
 
 export const Icon: Story = {
-  args: { variant: 'icon', children: <span role="img" aria-label="icon">🔍</span> },
+  args: { variant: 'icon' },
 };

@@ -1,6 +1,6 @@
 {
-  "version": "0.0.10",
-  "generatedAt": "2026-03-14T13:20:27.009Z",
+  "version": "0.0.12",
+  "generatedAt": "2026-03-14T13:54:33.069Z",
   "components": [
     {
       "name": "TextField",
@@ -10,44 +10,44 @@
         "size": {
           "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "Size of the text field"
+          "description": "The size of the text field."
         },
         "variant": {
-          "type": "'default' | 'flat' | 'stroked'",
+          "type": "'default' | 'filled' | 'outlined'",
           "required": false,
-          "description": "Variant of the text field"
+          "description": "The variant of the text field."
         },
-        "state": {
-          "type": "'default' | 'disabled' | 'error'",
+        "disabled": {
+          "type": "boolean",
           "required": false,
-          "description": "State of the text field"
+          "description": "If true, the text field will be disabled."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for styling"
+          "description": "Additional class name for custom styling."
         }
       }
     },
     {
       "name": "Button",
       "path": "src/components/Button/Button.tsx",
-      "description": "A customizable button component with multiple variants and sizes.",
+      "description": "Button component",
       "props": {
         "variant": {
-          "type": "ButtonVariant",
+          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon'",
           "required": false,
-          "description": "The variant of the button"
+          "description": "The variant of the button."
         },
         "size": {
-          "type": "ButtonSize",
+          "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "The size of the button"
+          "description": "The size of the button."
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional class name for custom styling"
+          "description": "Additional className for styling overrides."
         }
       }
     }
