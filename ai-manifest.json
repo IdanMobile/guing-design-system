@@ -1,6 +1,6 @@
 {
-  "version": "0.0.12",
-  "generatedAt": "2026-03-14T13:54:33.069Z",
+  "version": "0.0.13",
+  "generatedAt": "2026-03-14T14:00:16.374Z",
   "components": [
     {
       "name": "TextField",
@@ -13,7 +13,7 @@
           "description": "The size of the text field."
         },
         "variant": {
-          "type": "'default' | 'filled' | 'outlined'",
+          "type": "'default' | 'flat' | 'stroked'",
           "required": false,
           "description": "The variant of the text field."
         },
@@ -35,19 +35,34 @@
       "description": "Button component",
       "props": {
         "variant": {
-          "type": "'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon'",
+          "type": "'default' | 'flat' | 'stroked' | 'basic'",
           "required": false,
-          "description": "The variant of the button."
+          "description": "The variant of the button"
         },
         "size": {
           "type": "'sm' | 'md' | 'lg'",
           "required": false,
-          "description": "The size of the button."
+          "description": "The size of the button"
+        },
+        "pressed": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be in a pressed state"
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will be disabled"
+        },
+        "withIcon": {
+          "type": "boolean",
+          "required": false,
+          "description": "If true, the button will include an icon"
         },
         "className": {
           "type": "string",
           "required": false,
-          "description": "Additional className for styling overrides."
+          "description": "Additional class name for custom styling"
         }
       }
     }

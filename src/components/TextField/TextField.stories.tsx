@@ -16,27 +16,30 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     variant: 'default',
-    size: 'md',
   },
 };
 
-export const Filled: Story = {
+export const Flat: Story = {
   args: {
-    variant: 'filled',
-    size: 'md',
+    variant: 'flat',
   },
 };
 
-export const Outlined: Story = {
+export const Stroked: Story = {
   args: {
-    variant: 'outlined',
-    size: 'md',
+    variant: 'stroked',
   },
 };
 
 export const Small: Story = {
   args: {
     size: 'sm',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
   },
 };
 
