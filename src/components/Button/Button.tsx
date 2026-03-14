@@ -1,13 +1,21 @@
 // Button.tsx
 import React from 'react';
 
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * The variant of the button.
+   * - 'default': Standard button with background color.
+   * - 'flat': Button with no background color.
+   * - 'stroked': Button with a border.
+   * - 'basic': Minimal button with no styling.
+   * - 'icon': Button intended for icon use.
    */
   variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
   /**
    * The size of the button.
+   * - 'sm': Small button.
+   * - 'md': Medium button.
+   * - 'lg': Large button.
    */
   size?: 'sm' | 'md' | 'lg';
   /**
@@ -15,7 +23,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
    */
   disabled?: boolean;
   /**
-   * Additional className for custom styling.
+   * Additional class names to apply to the button.
    */
   className?: string;
 }
@@ -30,27 +38,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref) => {
   const styles: React.CSSProperties = {
     padding: size === 'sm' ? '8px 16px' : size === 'lg' ? '16px 32px' : '12px 24px',
-    backgroundColor: variant === 'default' ? 'var(--color-primary-buttons)' :
-                     variant === 'flat' ? 'transparent' :
-                     variant === 'stroked' ? 'transparent' :
-                     variant === 'basic' ? 'var(--color-buttons-secondary-button)' :
-                     'transparent',
-    color: variant === 'default' ? 'var(--color-white-white)' :
-           variant === 'flat' ? 'var(--color-primary-buttons)' :
-           variant === 'stroked' ? 'var(--color-primary-buttons)' :
-           variant === 'basic' ? 'var(--color-white-white)' :
-           'var(--color-primary-buttons)',
+    fontSize: size === 'sm' ? '12px' : size === 'lg' ? '18px' : '14px',
+    backgroundColor: variant === 'default' ? 'var(--color-primary-buttons)' : 'transparent',
     border: variant === 'stroked' ? '1px solid var(--color-primary-buttons)' : 'none',
-    borderRadius: '4px',
+    color: variant === 'flat' || variant === 'icon' ? 'var(--color-primary-buttons)' : 'var(--color-white-white)',
     cursor: disabled ? 'not-allowed' : 'pointer',
     opacity: disabled ? 0.5 : 1,
+    transition: 'background-color 0.3s, color 0.3s',
+    borderRadius: '4px',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: 'var(--font-inter-medium-*)',
-    fontSize: '14px',
-    fontWeight: 500,
-    lineHeight: '20px',
+    textDecoration: 'none',
   };
 
   return (
@@ -65,8 +64,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
     </button>
   );
 });
-
-Button.displayName = 'Button';
 
 export { Button };
 export default Button;

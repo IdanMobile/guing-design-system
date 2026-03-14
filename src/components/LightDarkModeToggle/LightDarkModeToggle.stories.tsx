@@ -5,37 +5,30 @@ import { LightDarkModeToggle } from './LightDarkModeToggle';
 const meta = {
   title: 'Components/LightDarkModeToggle',
   component: LightDarkModeToggle,
-  args: {
-    initialState: false,
-  },
+  args: { size: 'md', variant: 'default', disabled: false },
 } satisfies Meta<typeof LightDarkModeToggle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    size: 'md',
-    variant: 'default',
-  },
+export const Default: Story = {};
+
+export const Small: Story = {
+  args: { size: 'sm' },
 };
 
-export const SmallFlat: Story = {
-  args: {
-    size: 'sm',
-    variant: 'flat',
-  },
+export const Large: Story = {
+  args: { size: 'lg' },
 };
 
-export const LargeDefault: Story = {
-  args: {
-    size: 'lg',
-    variant: 'default',
-  },
+export const Flat: Story = {
+  args: { variant: 'flat' },
 };
 
-export const DarkModeInitial: Story = {
-  args: {
-    initialState: true,
-  },
+export const Stroked: Story = {
+  args: { variant: 'stroked' },
+};
+
+export const Disabled: Story = {
+  args: { disabled: true },
 };

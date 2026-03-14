@@ -1,6 +1,6 @@
 // MultiFunctionButton.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import MultiFunctionButton from './MultiFunctionButton';
+import { MultiFunctionButton } from './MultiFunctionButton';
 
 const meta = {
   title: 'Components/MultiFunctionButton',
@@ -16,24 +16,33 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     variant: 'default',
+    size: 'md',
+    pressed: false,
+    disabled: false,
   },
 };
 
-export const Primary: Story = {
+export const Flat: Story = {
   args: {
-    variant: 'primary',
+    variant: 'flat',
   },
 };
 
-export const Secondary: Story = {
+export const Stroked: Story = {
   args: {
-    variant: 'secondary',
+    variant: 'stroked',
   },
 };
 
-export const Danger: Story = {
+export const Basic: Story = {
   args: {
-    variant: 'danger',
+    variant: 'basic',
+  },
+};
+
+export const Pressed: Story = {
+  args: {
+    pressed: true,
   },
 };
 

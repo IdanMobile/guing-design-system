@@ -3485,3 +3485,7 @@ export const designTokens = {
 export type DesignTokens = typeof designTokens;
 export type ColorKey = keyof typeof designTokens.colors;
 export type TypographyKey = keyof typeof designTokens.typography;
+export type RadiusKey = keyof typeof designTokens.radius;
+export type ShadowKey = keyof typeof designTokens.shadows;
+export type ElevationKey = keyof typeof designTokens.elevations;
+export type BorderKey = keyof typeof designTokens.borders;

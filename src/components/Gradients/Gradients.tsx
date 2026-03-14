@@ -3,6 +3,12 @@ import tokens from '../../design-tokens/tokens.json';
 
 export const Gradients = () => {
   const gradients = (tokens as any).gradients || [];
+  const colors = (tokens as any).colors || [];
+
+  const getColorName = (hex: string) => {
+    const match = colors.find((c: any) => c.value.toLowerCase() === hex.toLowerCase());
+    return match ? match.name : hex;
+  };
 
   const renderGradient = (g: any) => {
     const stops = g.stops.map((s: any) => `\${s.color} \${Math.round(s.position * 100)}%`).join(', ');
@@ -38,12 +44,17 @@ export const Gradients = () => {
                   <span style={{ fontSize: '0.8rem', color: '#555', fontFamily: 'monospace' }}>{g.stops.length} stops</span>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.25rem' }}>
-                  {g.stops.map((s: any, i: number) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                      <div style={{ width: '12px', height: '12px', backgroundColor: s.color, borderRadius: '2px', border: '1px solid #ddd', opacity: s.opacity }} />
-                      <span style={{ fontSize: '0.75rem', color: '#666', fontFamily: 'monospace' }}>{s.color} {Math.round(s.position * 100)}%</span>
-                    </div>
-                  ))}
+                  {g.stops.map((s: any, i: number) => {
+                    const colorName = getColorName(s.color);
+                    return (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                        <div style={{ width: '12px', height: '12px', backgroundColor: s.color, borderRadius: '2px', border: '1px solid #ddd', opacity: s.opacity }} />
+                        <span style={{ fontSize: '0.75rem', color: '#666', fontFamily: 'monospace' }}>
+                          {colorName} {Math.round(s.position * 100)}%
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
