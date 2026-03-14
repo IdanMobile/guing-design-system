@@ -1,3 +1,4 @@
+// TextField.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import { TextField } from './TextField';
 
@@ -12,46 +13,42 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    variant: 'default',
-    size: 'md',
-    state: 'enabled',
-  },
-};
-
-export const Outlined: Story = {
-  args: {
-    variant: 'outlined',
-  },
-};
-
-export const Filled: Story = {
-  args: {
-    variant: 'filled',
-  },
-};
-
 export const Small: Story = {
-  args: {
-    size: 'sm',
-  },
+  args: { size: 'sm' },
+};
+
+export const Medium: Story = {
+  args: { size: 'md' },
 };
 
 export const Large: Story = {
-  args: {
-    size: 'lg',
-  },
+  args: { size: 'lg' },
 };
 
-export const Disabled: Story = {
-  args: {
-    state: 'disabled',
-  },
+export const DefaultVariant: Story = {
+  args: { variant: 'default' },
 };
 
-export const Error: Story = {
-  args: {
-    state: 'error',
-  },
+export const FlatVariant: Story = {
+  args: { variant: 'flat' },
+};
+
+export const StrokedVariant: Story = {
+  args: { variant: 'stroked' },
+};
+
+export const BasicVariant: Story = {
+  args: { variant: 'basic' },
+};
+
+export const DefaultState: Story = {
+  args: { state: 'default' },
+};
+
+export const PressedState: Story = {
+  args: { state: 'pressed' },
+};
+
+export const DisabledState: Story = {
+  args: { state: 'disabled' },
 };
