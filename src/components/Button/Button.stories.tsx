@@ -1,3 +1,4 @@
+// Button.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
@@ -6,6 +7,9 @@ const meta = {
   component: Button,
   args: {
     children: 'Click me',
+    variant: 'default',
+    size: 'md',
+    disabled: false,
   },
 } satisfies Meta<typeof Button>;
 
@@ -28,22 +32,18 @@ export const Basic: Story = {
   args: { variant: 'basic' },
 };
 
-export const Toggle: Story = {
-  args: { variant: 'toggle' },
+export const Icon: Story = {
+  args: { variant: 'icon' },
 };
 
-export const MultiFunction: Story = {
-  args: { variant: 'multi-function' },
+export const Small: Story = {
+  args: { size: 'sm' },
 };
 
-export const Pressed: Story = {
-  args: { variant: 'pressed' },
+export const Large: Story = {
+  args: { size: 'lg' },
 };
 
 export const Disabled: Story = {
-  args: { variant: 'disabled', disabled: true },
-};
-
-export const Icon: Story = {
-  args: { variant: 'icon' },
+  args: { disabled: true },
 };

@@ -1,16 +1,21 @@
+// Button.tsx
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
   /**
    * The variant of the button.
    */
-  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'toggle' | 'multi-function' | 'pressed' | 'disabled' | 'icon';
+  variant?: 'default' | 'flat' | 'stroked' | 'basic' | 'icon';
   /**
    * The size of the button.
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * Additional className for styling overrides.
+   * If true, the button will be disabled.
+   */
+  disabled?: boolean;
+  /**
+   * Additional className for custom styling.
    */
   className?: string;
 }
@@ -18,24 +23,27 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'default',
   size = 'md',
+  disabled = false,
   className,
+  children,
   ...props
 }, ref) => {
   const styles: React.CSSProperties = {
     padding: size === 'sm' ? '8px 16px' : size === 'lg' ? '16px 32px' : '12px 24px',
     backgroundColor: variant === 'default' ? 'var(--color-primary-buttons)' :
-                    variant === 'flat' ? 'transparent' :
-                    variant === 'stroked' ? 'transparent' :
-                    variant === 'basic' ? 'var(--color-buttons-secondary-button)' :
-                    variant === 'toggle' ? 'var(--color-selected-secondary-button)' :
-                    variant === 'multi-function' ? 'var(--color-primary-primary-button)' :
-                    variant === 'pressed' ? 'var(--color-hover)' :
-                    variant === 'disabled' ? 'var(--color-disabled)' :
-                    'var(--color-icons-1)',
-    color: variant === 'disabled' ? 'var(--color-disabled-text)' : 'var(--color-white-white)',
-    border: variant === 'stroked' ? '1px solid var(--color-divider-stroke)' : 'none',
+                     variant === 'flat' ? 'transparent' :
+                     variant === 'stroked' ? 'transparent' :
+                     variant === 'basic' ? 'var(--color-buttons-secondary-button)' :
+                     'transparent',
+    color: variant === 'default' ? 'var(--color-white-white)' :
+           variant === 'flat' ? 'var(--color-primary-buttons)' :
+           variant === 'stroked' ? 'var(--color-primary-buttons)' :
+           variant === 'basic' ? 'var(--color-white-white)' :
+           'var(--color-primary-buttons)',
+    border: variant === 'stroked' ? '1px solid var(--color-primary-buttons)' : 'none',
     borderRadius: '4px',
-    cursor: variant === 'disabled' ? 'not-allowed' : 'pointer',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.5 : 1,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -50,14 +58,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       className={className}
       style={styles}
-      disabled={variant === 'disabled'}
+      disabled={disabled}
       {...props}
-    />
+    >
+      {children}
+    </button>
   );
 });
 
 Button.displayName = 'Button';
 
 export { Button };
-export type { ButtonProps };
 export default Button;

@@ -1,52 +1,58 @@
-// TextField.tsx
-import React from 'react';
+import React, { forwardRef } from 'react';
+import type { InputHTMLAttributes } from 'react';
 
-export interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+/**
+ * TextField component props
+ */
+export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /**
-   * The size of the text field.
+   * Size of the text field
+   * @default 'md'
    */
   size?: 'sm' | 'md' | 'lg';
   /**
-   * The variant of the text field.
+   * Variant of the text field
+   * @default 'default'
    */
-  variant?: 'default' | 'filled' | 'outlined';
+  variant?: 'default' | 'outlined' | 'filled';
   /**
-   * If true, the text field will be disabled.
+   * State of the text field
+   * @default 'enabled'
    */
-  disabled?: boolean;
+  state?: 'enabled' | 'disabled' | 'error';
   /**
-   * Additional class name for custom styling.
+   * Additional class name for styling
    */
   className?: string;
 }
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(({
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   size = 'md',
   variant = 'default',
-  disabled = false,
+  state = 'enabled',
   className,
   ...props
 }, ref) => {
   const styles: React.CSSProperties = {
-    padding: size === 'sm' ? '4px 8px' : size === 'lg' ? '12px 16px' : '8px 12px',
-    backgroundColor: variant === 'filled' ? 'var(--color-dialog-sections)' : 'var(--color-white-white)',
+    padding: size === 'sm' ? '8px' : size === 'lg' ? '16px' : '12px',
     border: variant === 'outlined' ? '1px solid var(--color-divider-stroke)' : 'none',
-    borderRadius: '4px',
+    backgroundColor: variant === 'filled' ? 'var(--color-buttons-input)' : 'var(--color-white-white)',
+    color: state === 'error' ? 'var(--color-red-error-text-field)' : 'var(--color-body-text)',
+    opacity: state === 'disabled' ? 0.5 : 1,
+    cursor: state === 'disabled' ? 'not-allowed' : 'text',
+    fontFamily: 'var(--font-inter-regular-*)',
     fontSize: '14px',
-    color: 'var(--color-body-text)',
-    outline: 'none',
+    lineHeight: '20px',
     width: '100%',
     boxSizing: 'border-box',
-    cursor: disabled ? 'not-allowed' : 'text',
-    opacity: disabled ? 0.5 : 1,
   };
 
   return (
     <input
       ref={ref}
-      style={styles}
       className={className}
-      disabled={disabled}
+      style={styles}
+      disabled={state === 'disabled'}
       {...props}
     />
   );

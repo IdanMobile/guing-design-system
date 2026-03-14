@@ -1,71 +1,56 @@
 // MultiFunctionButton.stories.tsx
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import MultiFunctionButton, { MultiFunctionButtonProps } from './MultiFunctionButton';
+import type { Meta, StoryObj } from '@storybook/react';
+import MultiFunctionButton from './MultiFunctionButton';
 
-export default {
+const meta = {
   title: 'Components/MultiFunctionButton',
   component: MultiFunctionButton,
-  argTypes: {
-    size: {
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large'],
-      },
-    },
-    variant: {
-      control: {
-        type: 'select',
-        options: ['default', 'flat', 'stroked', 'basic'],
-      },
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    className: {
-      control: 'text',
-    },
+  args: {
+    children: 'Click me',
   },
-} as Meta;
+} satisfies Meta<typeof MultiFunctionButton>;
 
-const Template: Story<MultiFunctionButtonProps> = (args) => <MultiFunctionButton {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  size: 'medium',
-  variant: 'default',
-  disabled: false,
-  children: 'Button',
+export const Default: Story = {
+  args: {
+    variant: 'default',
+  },
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  size: 'medium',
-  variant: 'flat',
-  disabled: false,
-  children: 'Button',
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+  },
 };
 
-export const Stroked = Template.bind({});
-Stroked.args = {
-  size: 'medium',
-  variant: 'stroked',
-  disabled: false,
-  children: 'Button',
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+  },
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  size: 'medium',
-  variant: 'basic',
-  disabled: false,
-  children: 'Button',
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  size: 'medium',
-  variant: 'default',
-  disabled: true,
-  children: 'Button',
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+  },
 };
