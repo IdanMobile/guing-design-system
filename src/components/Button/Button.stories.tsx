@@ -4,7 +4,9 @@ import { Button } from './Button';
 const meta = {
   title: 'Components/Button',
   component: Button,
-  args: { children: 'Click me' },
+  args: {
+    children: 'Click me',
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -30,8 +32,8 @@ export const Toggle: Story = {
   args: { variant: 'toggle' },
 };
 
-export const MultiFunction: Story = {
-  args: { variant: 'multi-function' },
+export const Multi: Story = {
+  args: { variant: 'multi' },
 };
 
 export const Pressed: Story = {
@@ -39,9 +41,21 @@ export const Pressed: Story = {
 };
 
 export const Disabled: Story = {
-  args: { variant: 'disabled', disabled: true },
+  args: { variant: 'disabled' },
 };
 
 export const Icon: Story = {
-  args: { variant: 'icon', children: <span role="img" aria-label="icon">🔍</span> },
+  args: { variant: 'icon' },
+};
+
+export const Small: Story = {
+  args: { size: 'sm' },
+};
+
+export const Medium: Story = {
+  args: { size: 'md' },
+};
+
+export const Large: Story = {
+  args: { size: 'lg' },
 };

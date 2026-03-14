@@ -17,42 +17,38 @@ export const Default: Story = {
   args: {
     variant: 'default',
     size: 'md',
-    state: 'default',
+    state: 'normal',
   },
 };
 
-export const Flat: Story = {
+export const Filled: Story = {
   args: {
-    variant: 'flat',
+    variant: 'filled',
+    size: 'md',
+    state: 'normal',
   },
 };
 
-export const Stroked: Story = {
+export const Outlined: Story = {
   args: {
-    variant: 'stroked',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'sm',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: 'lg',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    state: 'disabled',
+    variant: 'outlined',
+    size: 'md',
+    state: 'normal',
   },
 };
 
 export const Error: Story = {
   args: {
+    variant: 'default',
+    size: 'md',
     state: 'error',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    variant: 'default',
+    size: 'md',
+    state: 'disabled',
   },
 };
